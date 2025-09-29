@@ -14,8 +14,8 @@ std::string VectorP2Q::calculateAnswerFromQuestion(std::smatch match) {
     std::string answer = "(";
     for(int i = 0; i < DIM; i++) {
         int p = std::stoi(match[i + 1]);
-        int q = std::stoi(match[i + 1 + DIM]);
-        answer += std::to_string(q + p);
+        int pq = std::stoi(match[i + 1 + DIM]);
+        answer += std::to_string(p + pq);
         if(i < DIM - 1) answer += ", ";
     }
     answer += ")";
