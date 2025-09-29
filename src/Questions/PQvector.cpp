@@ -39,7 +39,7 @@ void PQvector::generateOptions() {
     options[1] = wrongAnswer;
     wrongAnswer = "(";
     for(int i = 0; i < DIM; i++) {
-        wrongAnswer += std::to_string(data[i] - data[i + DIM] + rng.getInt(-3,3));
+        wrongAnswer += std::to_string(- data[i] - data[i + DIM]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
     wrongAnswer += ")";
