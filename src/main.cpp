@@ -9,9 +9,10 @@
 #include "VectorQ2P.hpp"
 #include "VectorAddition.hpp"
 #include "ScalarMultiplication.hpp"
+#include "LinearCombination.hpp"
 
 int main(int argc, char *argv[]){
-    int exampleQuestions = 2;
+    int exampleQuestions = 100;
     Question<Bin2Dec>& generator1 = Bin2Dec::getInstance();
     auto questions = generator1.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
@@ -54,6 +55,11 @@ int main(int argc, char *argv[]){
     }
     Question<ScalarMultiplication>& generator9 = ScalarMultiplication::getInstance();
     questions = generator9.generateQuestions(exampleQuestions);
+    for (auto &&question : questions) {
+        std::cout << question;
+    }
+    Question<LinearCombination>& generator10 = LinearCombination::getInstance();
+    questions = generator10.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
         std::cout << question;
     }
