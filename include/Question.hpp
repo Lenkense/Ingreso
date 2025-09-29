@@ -20,6 +20,12 @@ protected:
     Question() : data(Derived::DEFAULT_SIZE) {}
     virtual ~Question() {}
 
+    void initData() {
+        for (int i = 0; i < Derived::DEFAULT_SIZE; i++) {
+            data[i] = rng.getInt(Derived::MIN_INT, Derived::MAX_INT);
+        }
+    }
+
     void insertAnswer() {
         int lastOption = NUM_OF_OPTIONS - 1;
         rng.shuffle(options, options + lastOption);
@@ -46,10 +52,11 @@ protected:
             return false;
         }
         std::string format(Derived::FORMAT);
+        // Escape all regex special characters in format string
+        std::regex special(R"([.^$|()\[\]{}*+?\\])");
+        format = std::regex_replace(format, special, "\\$&");
         std::regex target("%s");
         format = std::regex_replace(format, target, "(.*)");
-        target = "\\+";
-        format = std::regex_replace(format, target, "\\+");
         std::regex regex(format);
         std::smatch match;
         std::string question = getQuestion();
@@ -64,7 +71,6 @@ protected:
     }
 
    // This is the API that your classes should implement
-    virtual void initData() = 0;
     virtual std::string calculateAnswer() = 0;
     virtual std::string calculateAnswerFromQuestion(std::smatch match) = 0;
     virtual void generateOptions() = 0;
