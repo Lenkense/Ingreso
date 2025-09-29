@@ -7,6 +7,7 @@
 #include "PQvector.hpp"
 #include "VectorP2Q.hpp"
 #include "VectorQ2P.hpp"
+#include "VectorAddition.hpp"
 
 int main(int argc, char *argv[]){
     int exampleQuestions = 2;
@@ -42,6 +43,11 @@ int main(int argc, char *argv[]){
     }
     Question<VectorQ2P>& generator7 = VectorQ2P::getInstance();
     questions = generator7.generateQuestions(exampleQuestions);
+    for (auto &&question : questions) {
+        std::cout << question;
+    }
+    Question<VectorAddition>& generator8 = VectorAddition::getInstance();
+    questions = generator8.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
         std::cout << question;
     }
