@@ -5,6 +5,7 @@
 #include "Addition.hpp"
 #include "Substraction.hpp"
 #include "PQvector.hpp"
+#include "VectorP2Q.hpp"
 
 int main(int argc, char *argv[]){
     Question<Bin2Dec>& generator1 = Bin2Dec::getInstance();
@@ -29,6 +30,11 @@ int main(int argc, char *argv[]){
     }
     Question<PQvector>& generator5 = PQvector::getInstance();
     questions = generator5.generateQuestions(10);
+    for (auto &&question : questions) {
+        std::cout << question;
+    }
+    Question<VectorP2Q>& generator6 = VectorP2Q::getInstance();
+    questions = generator6.generateQuestions(10);
     for (auto &&question : questions) {
         std::cout << question;
     }
