@@ -49,7 +49,7 @@ void ScalarMultiplication::generateOptions() {
 std::string ScalarMultiplication::getQuestion() {
     char buffer[128];
     snprintf(buffer, sizeof(buffer), FORMAT,
-             std::to_string(data[0]).c_str(), std::to_string(data[1]).c_str(),
-             std::to_string(data[2]).c_str(), std::to_string(data[3]).c_str());
+             std::to_string(data[0]).c_str(),
+             std::to_string(data[1]).c_str(), std::to_string(data[2]).c_str());
     return std::string(buffer);
 }
