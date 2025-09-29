@@ -6,35 +6,42 @@
 #include "Substraction.hpp"
 #include "PQvector.hpp"
 #include "VectorP2Q.hpp"
+#include "VectorQ2P.hpp"
 
 int main(int argc, char *argv[]){
+    int exampleQuestions = 2;
     Question<Bin2Dec>& generator1 = Bin2Dec::getInstance();
-    auto questions = generator1.generateQuestions(10);
+    auto questions = generator1.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
         std::cout << question;
     }
     Question<Dec2Bin>& generator2 = Dec2Bin::getInstance();
-    questions = generator2.generateQuestions(10);
+    questions = generator2.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
         std::cout << question;
     }
     Question<Addition>& generator3 = Addition::getInstance();
-    questions = generator3.generateQuestions(10);
+    questions = generator3.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
         std::cout << question;
     }
     Question<Substraction>& generator4 = Substraction::getInstance();
-    questions = generator4.generateQuestions(10);
+    questions = generator4.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
         std::cout << question;
     }
     Question<PQvector>& generator5 = PQvector::getInstance();
-    questions = generator5.generateQuestions(10);
+    questions = generator5.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
         std::cout << question;
     }
     Question<VectorP2Q>& generator6 = VectorP2Q::getInstance();
-    questions = generator6.generateQuestions(10);
+    questions = generator6.generateQuestions(exampleQuestions);
+    for (auto &&question : questions) {
+        std::cout << question;
+    }
+    Question<VectorQ2P>& generator7 = VectorQ2P::getInstance();
+    questions = generator7.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
         std::cout << question;
     }
