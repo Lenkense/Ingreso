@@ -13,8 +13,8 @@ protected:
 public:
     inline constexpr static size_t DEFAULT_SIZE = 2 * WIDTH;
     inline const static char *FORMAT = "Sumar: %s + %s";
-    inline constexpr static size_t MIN_INT = 0;
-    inline constexpr static size_t MAX_INT = 1;
+    inline constexpr static int MIN_INT = 0;
+    inline constexpr static int MAX_INT = 1;
 };
 
 #endif

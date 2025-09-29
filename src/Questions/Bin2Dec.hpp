@@ -11,8 +11,8 @@ class Bin2Dec : public Question<Bin2Dec>{
 public:
     inline constexpr static size_t DEFAULT_SIZE = 1;
     inline const static char *FORMAT = "Convertir %s a decimal";
-    inline constexpr static size_t MAX_INT = 3500;
-    inline constexpr static size_t MIN_INT = 1500;
+    inline constexpr static int MAX_INT = 3500;
+    inline constexpr static int MIN_INT = 1500;
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;

@@ -7,8 +7,8 @@ class Dec2Bin : public Question<Dec2Bin>{
 public:
     inline constexpr static size_t DEFAULT_SIZE = 12;
     inline const static char *FORMAT = "Convertir %s a binario";
-    inline constexpr static size_t MIN_INT = 0;
-    inline constexpr static size_t MAX_INT = 1;
+    inline constexpr static int MIN_INT = 0;
+    inline constexpr static int MAX_INT = 1;
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;
