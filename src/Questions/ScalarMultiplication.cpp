@@ -39,7 +39,7 @@ void ScalarMultiplication::generateOptions() {
     options[1] = wrongAnswer;
     wrongAnswer = "(";
     for(int i = 0; i < DIM; i++) {
-        wrongAnswer += std::to_string(- data[i + 1] * - data[0]);
+        wrongAnswer += std::to_string(- data[i + 1] * data[0]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
     wrongAnswer += ")";
