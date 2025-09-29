@@ -8,6 +8,7 @@
 #include "VectorP2Q.hpp"
 #include "VectorQ2P.hpp"
 #include "VectorAddition.hpp"
+#include "ScalarMultiplication.hpp"
 
 int main(int argc, char *argv[]){
     int exampleQuestions = 2;
@@ -48,6 +49,11 @@ int main(int argc, char *argv[]){
     }
     Question<VectorAddition>& generator8 = VectorAddition::getInstance();
     questions = generator8.generateQuestions(exampleQuestions);
+    for (auto &&question : questions) {
+        std::cout << question;
+    }
+    Question<ScalarMultiplication>& generator9 = ScalarMultiplication::getInstance();
+    questions = generator9.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
         std::cout << question;
     }
