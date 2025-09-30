@@ -1,7 +1,7 @@
 #include "Question.hpp"
-#include "ExampleAddition.hpp"
 
 #define _EXAMPLEADDITION_IMPLEMENTATION_
+#include "ExampleAddition.hpp"
 
 int main() {
     Question<ExampleAddition>& example = ExampleAddition::getInstance();
