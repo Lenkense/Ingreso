@@ -25,7 +25,6 @@ std::string LinearCombination::calculateAnswerFromQuestion(std::smatch match) {
 }
 
 void LinearCombination::generateOptions() {
-    //TODO fix bug options, is generating bad ones
     std::string wrongAnswer = "(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(data[1] * data[i + 2] +  data[0] * data[i + 2 + DIM]);

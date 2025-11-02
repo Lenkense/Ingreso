@@ -12,7 +12,6 @@ std::string Bin2Dec::calculateAnswerFromQuestion(std::smatch match){
     return std::to_string(number.to_ulong());
 }
 
-//TODO generate options bitset should be in PRNG.hpp
 void Bin2Dec::generateOptions(){
     int numberOfWrongOptions = NUM_OF_OPTIONS - 1;
     int maxNumOfBitFlips = 3;
