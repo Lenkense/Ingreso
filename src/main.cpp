@@ -10,6 +10,8 @@
 #include "VectorAddition.hpp"
 #include "ScalarMultiplication.hpp"
 #include "LinearCombination.hpp"
+#include "VectorLength.hpp"
+#include "UnitVector.hpp"
 
 int main(int argc, char *argv[]){
     int exampleQuestions = 100;
@@ -60,6 +62,16 @@ int main(int argc, char *argv[]){
     }
     Question<LinearCombination>& generator10 = LinearCombination::getInstance();
     questions = generator10.generateQuestions(exampleQuestions);
+    for (auto &&question : questions) {
+        std::cout << question;
+    }
+    Question<VectorLength>& generator11 = VectorLength::getInstance();
+    questions = generator11.generateQuestions(exampleQuestions);
+    for (auto &&question : questions) {
+        std::cout << question;
+    }
+    Question<UnitVector>& generator12 = UnitVector::getInstance();
+    questions = generator12.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
         std::cout << question;
     }
