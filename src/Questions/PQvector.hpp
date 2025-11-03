@@ -13,7 +13,7 @@ protected:
 public:
     inline constexpr static size_t DEFAULT_SIZE = 2 * DIM;
     inline const static char *FORMAT =
-        "Calcular el vector PQ donde: P = (%s, %s) y Q = (%s, %s)";
+        "\"Calcular el vector PQ donde: P = (%s, %s) y Q = (%s, %s)\"";
     inline constexpr static int MIN_INT = -10;
     inline constexpr static int MAX_INT = 10;
 };

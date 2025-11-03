@@ -5,8 +5,8 @@ std::string VectorLength::calculateAnswer(){
     for (size_t i = 0; i < DIM; i++){
         squared += data[i] * data[i];
     }
-    std::string answer = sqrtSymborl + "(";
-    answer += std::to_string(squared) + ")";
+    std::string answer = "\"" + sqrtSymborl + "(";
+    answer += std::to_string(squared) + ")\"";
     return answer;
 };
 
@@ -17,8 +17,8 @@ std::string VectorLength::calculateAnswerFromQuestion(std::smatch match){
         vector[i] = std::stoi(match[i + 1]);
         squared += vector[i] * vector[i];
     }
-    std::string answer = sqrtSymborl + "(";
-    answer += std::to_string(squared) + ")";
+    std::string answer = "\"" + sqrtSymborl + "(";
+    answer += std::to_string(squared) + ")\"";
     return answer;
 }
 
@@ -33,14 +33,14 @@ void VectorLength::generateOptions(){
     }
     linear = linear > 0 ? linear : -linear;
     linear = linear == 0 ? 1 : linear;
-    std::string answer = sqrtSymborl + "(";
-    answer += std::to_string(squared + rng.getInt(-3,3)) + ")";
+    std::string answer = "\"" + sqrtSymborl + "(";
+    answer += std::to_string(squared + rng.getInt(-3,3)) + ")\"";
     options[0] = answer;
-    answer = sqrtSymborl + "(";
-    answer += std::to_string(linear) + ")";
+    answer = "\"" + sqrtSymborl + "(";
+    answer += std::to_string(linear) + ")\"";
     options[1] = answer;
-    answer = sqrtSymborl + "(";
-    answer += std::to_string(absolute) + ")";
+    answer = "\"" + sqrtSymborl + "(";
+    answer += std::to_string(absolute) + ")\"";
     options[2] = answer;
 }
 

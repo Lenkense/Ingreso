@@ -1,48 +1,48 @@
 #include "VectorQ2P.hpp"
 
 std::string VectorQ2P::calculateAnswer() {
-    std::string answer = "(";
+    std::string answer = "\"(";
     for(int i = 0; i < DIM; i++) {
         answer += std::to_string(data[i] - data[i + DIM]);
         if(i < DIM - 1) answer += ", ";
     }
-    answer += ")";
+    answer += ")\"";
     return answer;
 }
 
 std::string VectorQ2P::calculateAnswerFromQuestion(std::smatch match) {
-    std::string answer = "(";
+    std::string answer = "\"(";
     for(int i = 0; i < DIM; i++) {
         int q = std::stoi(match[i + 1]);
         int pq = std::stoi(match[i + 1 + DIM]);
         answer += std::to_string(q - pq);
         if(i < DIM - 1) answer += ", ";
     }
-    answer += ")";
+    answer += ")\"";
     return answer;
 }
 
 void VectorQ2P::generateOptions() {
-    std::string wrongAnswer = "(";
+    std::string wrongAnswer = "\"(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(data[i + DIM] - data[i]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")";
+    wrongAnswer += ")\"";
     options[0] = wrongAnswer;
-    wrongAnswer = "(";
+    wrongAnswer = "\"(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(data[i + DIM] + data[i]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")";
+    wrongAnswer += ")\"";
     options[1] = wrongAnswer;
-    wrongAnswer = "(";
+    wrongAnswer = "\"(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(- data[i] - data[i + DIM]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")";
+    wrongAnswer += ")\"";
     options[2] = wrongAnswer;
 }
 

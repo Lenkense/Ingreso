@@ -1,17 +1,17 @@
 #include "LinearCombination.hpp"
 
 std::string LinearCombination::calculateAnswer() {
-    std::string answer = "(";
+    std::string answer = "\"(";
     for(int i = 0; i < DIM; i++) {
         answer += std::to_string(data[0] * data[i + 2] + data[1] * data[i + 2 + DIM]);
         if(i < DIM - 1) answer += ", ";
     }
-    answer += ")";
+    answer += ")\"";
     return answer;
 }
 
 std::string LinearCombination::calculateAnswerFromQuestion(std::smatch match) {
-    std::string answer = "(";
+    std::string answer = "\"(";
     int k = std::stoi(match[1]);
     int t = std::stoi(match[2]);
     for(int i = 0; i < DIM; i++) {
@@ -20,31 +20,31 @@ std::string LinearCombination::calculateAnswerFromQuestion(std::smatch match) {
         answer += std::to_string(k * u  + t * v);
         if(i < DIM - 1) answer += ", ";
     }
-    answer += ")";
+    answer += ")\"";
     return answer;
 }
 
 void LinearCombination::generateOptions() {
-    std::string wrongAnswer = "(";
+    std::string wrongAnswer = "\"(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(data[1] * data[i + 2] +  data[0] * data[i + 2 + DIM]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")";
+    wrongAnswer += ")\"";
     options[0] = wrongAnswer;
-    wrongAnswer = "(";
+    wrongAnswer = "\"(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(data[0] + data[i + 2] +  data[1] + data[i + 2 + DIM]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")";
+    wrongAnswer += ")\"";
     options[1] = wrongAnswer;
-    wrongAnswer = "(";
+    wrongAnswer = "\"(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(data[1] - data[i + 2] -  data[2] - data[i + 2 + DIM]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")";
+    wrongAnswer += ")\"";
     options[2] = wrongAnswer;
 }
 

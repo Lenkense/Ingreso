@@ -1,48 +1,48 @@
 #include "VectorAddition.hpp"
 
 std::string VectorAddition::calculateAnswer() {
-    std::string answer = "(";
+    std::string answer = "\"(";
     for(int i = 0; i < DIM; i++) {
         answer += std::to_string(data[i + DIM] + data[i]);
         if(i < DIM - 1) answer += ", ";
     }
-    answer += ")";
+    answer += ")\"";
     return answer;
 }
 
 std::string VectorAddition::calculateAnswerFromQuestion(std::smatch match) {
-    std::string answer = "(";
+    std::string answer = "\"(";
     for(int i = 0; i < DIM; i++) {
         int u = std::stoi(match[i + 1]);
         int v = std::stoi(match[i + 1 + DIM]);
         answer += std::to_string(u + v);
         if(i < DIM - 1) answer += ", ";
     }
-    answer += ")";
+    answer += ")\"";
     return answer;
 }
 
 void VectorAddition::generateOptions() {
-    std::string wrongAnswer = "(";
+    std::string wrongAnswer = "\"(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(data[i] - data[i + DIM]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")";
+    wrongAnswer += ")\"";
     options[0] = wrongAnswer;
-    wrongAnswer = "(";
+    wrongAnswer = "\"(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(data[i + DIM] - data[i]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")";
+    wrongAnswer += ")\"";
     options[1] = wrongAnswer;
-    wrongAnswer = "(";
+    wrongAnswer = "\"(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(- data[i] - data[i + DIM]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")";
+    wrongAnswer += ")\"";
     options[2] = wrongAnswer;
 }
 
