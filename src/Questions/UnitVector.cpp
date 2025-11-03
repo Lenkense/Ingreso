@@ -1,32 +1,49 @@
 #include "UnitVector.hpp"
 
 std::string UnitVector::calculateAnswer(){
-    int squared = data[0] * data[0] + data[1] * data[1];
-    char buffer[128];
-    snprintf(buffer, sizeof(buffer), unitVectorFormat, data[0], data[1], squared);
-    return std::string(buffer);
+    int squared = 0;
+    std::string answer = "(";
+    for (size_t i = 0; i < DIM; i++){
+        squared += data[i] * data[i];
+        answer += std::to_string(data[i]);
+        if(i < DIM - 1) answer += ", ";
+    }
+    answer += ") / " + sqrtSymbol + "(" + std::to_string(squared) + ")";
+    return answer;
 };
 
 std::string UnitVector::calculateAnswerFromQuestion(std::smatch match){
-    int x = std::stoi(match[1]);
-    int y = std::stoi(match[2]);
-    int squared = x * x + y * y;
-    char buffer[128];
-    snprintf(buffer, sizeof(buffer), unitVectorFormat, x, y, squared);
-    return std::string(buffer);
+    int squared = 0;
+    std::string answer = "(";
+    for( size_t i = 0; i < DIM; i++){
+        int value = std::stoi(match[i + 1]);
+        squared += value * value;
+        answer += std::to_string(data[i]);
+        if(i < DIM - 1) answer += ", ";
+    }
+    answer += ") / " + sqrtSymbol + "(" + std::to_string(squared) + ")";
+    return answer;
 }
 
 void UnitVector::generateOptions(){
-    char buffer[128];
-    int correctLength = data[0] * data[0] + data[1] * data[1];
-    int wrongLength = data[0] + data[1];
-    wrongLength = wrongLength > 0 ? wrongLength : -wrongLength;
-    snprintf(buffer, sizeof(buffer), unitVectorFormat, data[0], data[1], correctLength + rng.getInt(1,3));
-    options[0] = std::string(buffer);
-    snprintf(buffer, sizeof(buffer), unitVectorFormat, data[0], data[1], wrongLength);
-    options[1] = std::string(buffer);
-    snprintf(buffer, sizeof(buffer), unitVectorFormat, data[0], data[1], wrongLength + rng.getInt(1,3));
-    options[2] = std::string(buffer);
+    std::string vector = "(";
+    int squared = 0;
+    int linear = 0;
+    int absolute = 0;
+    for (size_t i = 0; i < DIM; i++){
+        squared += data[i] * data[i];
+        linear += data[i];
+        absolute += data[i] > 0 ? data[i] : -data[i];
+        vector += std::to_string(data[i]);
+        if(i < DIM - 1) vector += ", ";
+    }
+    vector += ")";
+    linear = linear > 0 ? linear : -linear;
+    linear = linear == 0 ? 1 : linear;  
+    squared += rng.getInt(1,3);
+    options[0] = vector + sqrtSymbol + "(" + std::to_string(squared) + ")";
+    options[1] = vector + sqrtSymbol + "(" + std::to_string(linear) + ")";
+    options[2] = vector + sqrtSymbol + "(" + std::to_string(absolute) + ")";
 }
 
 std::string UnitVector::getQuestion(){
