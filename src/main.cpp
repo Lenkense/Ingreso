@@ -15,6 +15,15 @@
 
 int main(int argc, char *argv[]){
     int exampleQuestions = 100;
+    if argc > 1 {
+        if argv[1] == "--help" || argv[1] == "-h" {
+            std::cout << "Generates a set of example questions for various question types." << std::endl;
+            std::cout << "Usage: " << argv[0] << " [number_of_questions]" << std::endl;
+            std::cout << "If number_of_questions is not provided, defaults to 100." << std::endl;
+            return 0;
+        }
+        exampleQuestions = std::stoi(argv[1]);
+    }
     Question<Bin2Dec>& generator1 = Bin2Dec::getInstance();
     auto questions = generator1.generateQuestions(exampleQuestions);
     for (auto &&question : questions) {
