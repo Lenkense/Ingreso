@@ -41,9 +41,9 @@ void UnitVector::generateOptions(){
     linear = linear > 0 ? linear : -linear;
     linear = linear == 0 ? 1 : linear;  
     squared += rng.getInt(1,3);
-    options[0] = vector + sqrtSymbol + "(" + std::to_string(squared) + ")";
-    options[1] = vector + sqrtSymbol + "(" + std::to_string(linear) + ")";
-    options[2] = vector + sqrtSymbol + "(" + std::to_string(absolute) + ")";
+    options[0] = vector + " / " + sqrtSymbol + "(" + std::to_string(squared) + ")";
+    options[1] = vector + " / " + sqrtSymbol + "(" + std::to_string(linear) + ")";
+    options[2] = vector + " / " + sqrtSymbol + "(" + std::to_string(absolute) + ")";
 }
 
 std::string UnitVector::getQuestion(){
