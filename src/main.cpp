@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "Question.hpp"
 #include "Bin2Dec.hpp"
 #include "Dec2Bin.hpp"
@@ -13,14 +14,32 @@
 #include "VectorLength.hpp"
 #include "UnitVector.hpp"
 
+void showHelp(std::string programName){
+    std::cout << "Generates a set of example questions for various question types." << std::endl;
+    std::cout << "Usage: " << programName << " [number_of_questions]" << std::endl;
+    std::cout << "If number_of_questions is not provided, defaults to 100." << std::endl;
+    return;
+}
+
 int main(int argc, char *argv[]){
     int exampleQuestions = 100;
-    if argc > 1 {
-        if argv[1] == "--help" || argv[1] == "-h" {
-            std::cout << "Generates a set of example questions for various question types." << std::endl;
-            std::cout << "Usage: " << argv[0] << " [number_of_questions]" << std::endl;
-            std::cout << "If number_of_questions is not provided, defaults to 100." << std::endl;
+    if(argc > 1){
+        if(strncmp(argv[1], "--help", sizeof("--help")) == 0
+                || strncmp(argv[1], "-h", sizeof("-h")) == 0){
+            showHelp(argv[0]);
             return 0;
+        }
+        try{
+            exampleQuestions = std::stoi(argv[1]);
+            if(exampleQuestions <= 0){
+                std::cerr << "Number of questions must be a positive integer." << std::endl;
+                showHelp(argv[0]);
+                return 1;
+            }
+        } catch (const std::invalid_argument& ia){
+            std::cerr << "Invalid number of questions: " << argv[1] << std::endl;
+            showHelp(argv[0]);
+            return 2;
         }
         exampleQuestions = std::stoi(argv[1]);
     }
