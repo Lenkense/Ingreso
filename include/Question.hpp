@@ -87,7 +87,6 @@ public:
             insertAnswer();
             validQuestion = isNotValidQuestion();
         }
-        //TODO: Maybe not hardcode blooket as the only option
         blooketFormat(outstream);
         return outstream.str();
     }
