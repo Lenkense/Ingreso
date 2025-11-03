@@ -34,7 +34,7 @@ void VectorLength::generateOptions(){
     linear = linear > 0 ? linear : -linear;
     linear = linear == 0 ? 1 : linear;
     std::string answer = sqrtSymborl + "(";
-    answer += std::to_string(squared + rng.getInt(1,3)) + ")";
+    answer += std::to_string(squared + rng.getInt(-3,3)) + ")";
     options[0] = answer;
     answer = sqrtSymborl + "(";
     answer += std::to_string(linear) + ")";
