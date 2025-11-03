@@ -40,7 +40,7 @@ void UnitVector::generateOptions(){
     vector += ")";
     linear = linear > 0 ? linear : -linear;
     linear = linear == 0 ? 1 : linear;  
-    squared += rng.getInt(1,3);
+    squared += rng.getInt(-3,3);
     options[0] = vector + " / " + sqrtSymbol + "(" + std::to_string(squared) + ")";
     options[1] = vector + " / " + sqrtSymbol + "(" + std::to_string(linear) + ")";
     options[2] = vector + " / " + sqrtSymbol + "(" + std::to_string(absolute) + ")";
