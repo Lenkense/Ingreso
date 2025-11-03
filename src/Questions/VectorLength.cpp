@@ -1,32 +1,47 @@
 #include "VectorLength.hpp"
 
 std::string VectorLength::calculateAnswer(){
-    int squared = data[0] * data[0] + data[1] * data[1];
-    char buffer[128];
-    snprintf(buffer, sizeof(buffer), sqrtFormat, squared);
-    return std::string(buffer);
+    int squared = 0;
+    for (size_t i = 0; i < DIM; i++){
+        squared += data[i] * data[i];
+    }
+    std::string answer = sqrtSymborl + "(";
+    answer += std::to_string(squared) + ")";
+    return answer;
 };
 
 std::string VectorLength::calculateAnswerFromQuestion(std::smatch match){
-    int x = std::stoi(match[1]);
-    int y = std::stoi(match[2]);
-    int squared = x * x + y * y;
-    char buffer[128];
-    snprintf(buffer, sizeof(buffer), sqrtFormat, squared);
-    return std::string(buffer);
+    int squared = 0;
+    int vector[DIM];
+    for( size_t i = 0; i < DIM; i++){
+        vector[i] = std::stoi(match[i + 1]);
+        squared += vector[i] * vector[i];
+    }
+    std::string answer = sqrtSymborl + "(";
+    answer += std::to_string(squared) + ")";
+    return answer;
 }
 
 void VectorLength::generateOptions(){
-    char buffer[128];
-    int correctLength = data[0] * data[0] + data[1] * data[1];
-    int wrongLength = data[0] + data[1];
-    wrongLength = wrongLength > 0 ? wrongLength : -wrongLength;
-    snprintf(buffer, sizeof(buffer), sqrtFormat, correctLength + rng.getInt(1,3));
-    options[0] = std::string(buffer);
-    snprintf(buffer, sizeof(buffer), sqrtFormat, wrongLength);
-    options[1] = std::string(buffer);
-    snprintf(buffer, sizeof(buffer), sqrtFormat, wrongLength + rng.getInt(1,3));
-    options[2] = std::string(buffer);
+    int squared = 0;
+    int linear = 0;
+    int absolute = 0;
+    for( size_t i = 0; i < DIM; i++){
+        squared += data[i] * data[i];
+        linear += data[i];
+        absolute += data[i] > 0 ? data[i] : -data[i];
+    }
+    linear = linear > 0 ? linear : -linear;
+    linear = linear == 0 ? 1 : linear;
+    std::string answer = sqrtSymborl + "(";
+    answer += std::to_string(squared + rng.getInt(1,3)) + ")";
+    options[0] = answer;
+    answer = sqrtSymborl + "(";
+    answer += std::to_string(linear) + ")";
+    options[1] = answer;
+    answer = sqrtSymborl + "(";
+    answer += std::to_string(absolute) + ")";
+    options[2] = answer;
 }
 
 std::string VectorLength::getQuestion(){
