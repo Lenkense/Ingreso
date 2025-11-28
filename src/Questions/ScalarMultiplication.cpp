@@ -1,48 +1,48 @@
 #include "ScalarMultiplication.hpp"
 
 std::string ScalarMultiplication::calculateAnswer() {
-    std::string answer = "\"(";
+    std::string answer = "(";
     for(int i = 0; i < DIM; i++) {
         answer += std::to_string(data[i + 1] * data[0]);
         if(i < DIM - 1) answer += ", ";
     }
-    answer += ")\"";
+    answer += ")";
     return answer;
 }
 
 std::string ScalarMultiplication::calculateAnswerFromQuestion(std::smatch match) {
-    std::string answer = "\"(";
+    std::string answer = "(";
     int k = std::stoi(match[1]);
     for(int i = 0; i < DIM; i++) {
         int v = std::stoi(match[i + 2]);
         answer += std::to_string(k * v);
         if(i < DIM - 1) answer += ", ";
     }
-    answer += ")\"";
+    answer += ")";
     return answer;
 }
 
 void ScalarMultiplication::generateOptions() {
-    std::string wrongAnswer = "\"(";
+    std::string wrongAnswer = "(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(data[i + 1] - data[0]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")\"";
+    wrongAnswer += ")";
     options[0] = wrongAnswer;
-    wrongAnswer = "\"(";
+    wrongAnswer = "(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(-data[i + 1] + data[0]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")\"";
+    wrongAnswer += ")";
     options[1] = wrongAnswer;
-    wrongAnswer = "\"(";
+    wrongAnswer = "(";
     for(int i = 0; i < DIM; i++) {
         wrongAnswer += std::to_string(- data[i + 1] * data[0]);
         if(i < DIM - 1) wrongAnswer += ", ";
     }
-    wrongAnswer += ")\"";
+    wrongAnswer += ")";
     options[2] = wrongAnswer;
 }
 

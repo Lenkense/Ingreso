@@ -7,6 +7,13 @@
 #ifndef _QUESTION_HPP_
 #define _QUESTION_HPP_
 
+enum TextFormat: u_int8_t{
+    LATEX,
+    BLOOKET,
+    NOOPTIONS,
+    PLAINTEXT
+};
+
 template <typename Derived>
 class Question : public Singleton<Derived>{
     friend class Singleton<Derived>;
@@ -35,17 +42,6 @@ protected:
         options[answer] = calculateAnswer();
     }
 
-     void blooketFormat(std::ostream& stream){
-        std::string question = getQuestion();
-        std::string endOfField = ",";
-        stream << question << endOfField;
-        for(auto option: options){
-            stream << option << endOfField;
-        }
-        stream << 300 << endOfField;
-        stream << answer + 1 << std::endl;
-    }
-
     bool isNotValidQuestion(){
         std::set<std::string> diffOptions{std::begin(options), std::end(options)};
         if (diffOptions.size() != NUM_OF_OPTIONS){
@@ -70,6 +66,46 @@ protected:
         return true;
     }
 
+    void blooketFormat(std::ostream& stream){
+        std::string question = getQuestion();
+        std::string endOfField = ",";
+        stream << "\"" << question << "\"" << endOfField;
+        for(auto option: options){
+            stream << "\"" << option << "\"" << endOfField;
+        }
+        stream << 300 << endOfField;
+        stream << answer + 1 << std::endl;
+    }
+
+    void latexFormat(std::ostream& stream){
+        std::string text;
+        text = "\\item " + getQuestion() + "\n";
+        std::string correctOption(1, 'a' + answer);
+        text += "%%%% Answer: " + correctOption + "\n";
+        text += "\\begin{enumerate}\n";
+        for(auto option: options){
+            text += "\\item " + option + "\n";
+        }
+        text += "\\end{enumerate}\n";
+        //TODO: Handle special LaTeX characters in question and options
+        std::regex re("√\\(([^)]*)\\)");
+        text = std::regex_replace(text, re, "$\\sqrt{$1}$");
+        stream << text;
+    }
+
+    void noOptionsFormat(std::ostream& stream){
+        stream << getQuestion() << std::endl;
+    }
+
+    void plainTextFormat(std::ostream& stream){
+        stream << getQuestion() << "\n";
+        for(auto option: options){
+            stream << option << "\n";
+        }
+        stream << "%%%% Answer: " << (char) ('a' + (char) answer) << "\n";
+        stream << "\n";
+    }
+
    // This is the API that your classes should implement
     virtual std::string calculateAnswer() = 0;
     virtual std::string calculateAnswerFromQuestion(std::smatch match) = 0;
@@ -77,7 +113,7 @@ protected:
     virtual std::string getQuestion() = 0;
 
 public:
-    std::string generateQuestion(){
+    std::string generateQuestion(TextFormat format){
         std::ostringstream outstream;
         bool validQuestion = false;
         while (!validQuestion) {
@@ -87,14 +123,27 @@ public:
             insertAnswer();
             validQuestion = isNotValidQuestion();
         }
-        blooketFormat(outstream);
+        switch(format){
+            case LATEX:
+                latexFormat(outstream);
+                break;
+            case BLOOKET:
+                blooketFormat(outstream);
+                break;
+            case NOOPTIONS:
+                noOptionsFormat(outstream);
+                break;
+            case PLAINTEXT:
+                plainTextFormat(outstream);
+                break;
+        }
         return outstream.str();
     }
 
-    std::vector<std::string> generateQuestions(int n){
+    std::vector<std::string> generateQuestions(int n, TextFormat format){
         std::vector<std::string> result(n);
         for (int i = 0; i < n; i++) {
-            result[i] = generateQuestion();
+            result[i] = generateQuestion(format);
         }
         return result;
     }

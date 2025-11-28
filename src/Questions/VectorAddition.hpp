@@ -13,7 +13,7 @@ protected:
 public:
     inline constexpr static size_t DEFAULT_SIZE = 2 * DIM;
     inline const static char *FORMAT =
-        "\"Calcular u + v a partir de u = (%s, %s) y v = (%s, %s)\"";
+        "Calcular u + v a partir de u = (%s, %s) y v = (%s, %s)";
     inline constexpr static int MIN_INT = -10;
     inline constexpr static int MAX_INT = 10;
 };

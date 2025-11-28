@@ -13,7 +13,7 @@ protected:
 public:
     inline constexpr static size_t DEFAULT_SIZE = 2 * DIM;
     inline const static char *FORMAT =
-        "\"Calcular Q a partir de P = (%s, %s) y el vector PQ = (%s, %s)\"";
+        "Calcular Q a partir de P = (%s, %s) y el vector PQ = (%s, %s)";
     inline constexpr static int MIN_INT = -10;
     inline constexpr static int MAX_INT = 10;
 };
