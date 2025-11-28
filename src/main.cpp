@@ -16,7 +16,7 @@
 
 void showHelp(std::string programName){
     std::cout << "Generates a set of example questions for various question types." << std::endl;
-    std::cout << "Usage: " << programName << " [number_of_questions]i [FORMAT]" << std::endl;
+    std::cout << "Usage: " << programName << " [number_of_questions] [FORMAT]" << std::endl;
     std::cout << "If number_of_questions is not provided, defaults to 100." << std::endl;
     std::cout << "FORMAT can be LATEX, BLOOKET, NOOPTIONS, or PLAINTEXT. Defaults to BLOOKET." << std::endl;
     return;
