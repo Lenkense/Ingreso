@@ -1,13 +1,9 @@
 #include "Question.hpp"
 
-#ifndef _SUBSTRACTION_HPP_
-#define _SUBSTRACTION_HPP_
+#ifndef _ADDITION_HPP_
+#define _ADDITION_HPP_
 
-constexpr int absDiff(int x, int y){
-    return (x > y) ? x - y : y - x;
-}
-
-class Substraction : public Question<Substraction>{
+class BinAddition : public Question<BinAddition>{
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;
@@ -16,7 +12,7 @@ protected:
     inline constexpr static size_t WIDTH = 8;
 public:
     inline constexpr static size_t DEFAULT_SIZE = 2 * WIDTH;
-    inline const static char *FORMAT = "Restar: %s - %s";
+    inline const static char *FORMAT = "Sumar: %s + %s";
     inline constexpr static int MIN_INT = 0;
     inline constexpr static int MAX_INT = 1;
 };

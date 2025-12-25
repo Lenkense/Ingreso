@@ -1,7 +1,7 @@
 #include <bitset>
-#include "Substraction.hpp"
+#include "BinSubstraction.hpp"
 
-std::string Substraction::calculateAnswer(){
+std::string BinSubstraction::calculateAnswer(){
     std::bitset<WIDTH> a;
     std::bitset<WIDTH> b;
     for (int i = 0; i < WIDTH; i++) {
@@ -14,14 +14,14 @@ std::string Substraction::calculateAnswer(){
     return answer.to_string();
 }
 
-std::string Substraction::calculateAnswerFromQuestion(std::smatch match){
+std::string BinSubstraction::calculateAnswerFromQuestion(std::smatch match){
     std::bitset<WIDTH> a(match[1].str());
     std::bitset<WIDTH> b(match[2].str());
     std::bitset<WIDTH> answer(a.to_ulong() - b.to_ulong());
     return answer.to_string();
 }
 
-void Substraction::generateOptions(){
+void BinSubstraction::generateOptions(){
     int numberOfWrongOptions = NUM_OF_OPTIONS - 1;
     int maxNumOfBitFlips = 3;
     std::bitset<WIDTH> correctAnswer(calculateAnswer());
@@ -33,7 +33,7 @@ void Substraction::generateOptions(){
     }
 }
 
-std::string Substraction::getQuestion(){
+std::string BinSubstraction::getQuestion(){
     std::bitset<WIDTH> a;
     std::bitset<WIDTH> b;
     for (int i = 0; i < WIDTH; i++) {

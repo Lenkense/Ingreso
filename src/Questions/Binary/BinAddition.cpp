@@ -1,7 +1,7 @@
 #include <bitset>
-#include "Addition.hpp"
+#include "BinAddition.hpp"
 
-std::string Addition::calculateAnswer(){
+std::string BinAddition::calculateAnswer(){
     std::bitset<WIDTH> a;
     std::bitset<WIDTH> b;
     for (int i = 0; i < WIDTH; i++) {
@@ -12,14 +12,14 @@ std::string Addition::calculateAnswer(){
     return answer.to_string();
 }
 
-std::string Addition::calculateAnswerFromQuestion(std::smatch match){
+std::string BinAddition::calculateAnswerFromQuestion(std::smatch match){
     std::bitset<WIDTH> a(match[1].str());
     std::bitset<WIDTH> b(match[2].str());
     std::bitset<WIDTH + 1> answer(a.to_ulong() + b.to_ulong());
     return answer.to_string();
 }
 
-void Addition::generateOptions(){
+void BinAddition::generateOptions(){
     int numberOfWrongOptions = NUM_OF_OPTIONS - 1;
     int maxNumOfBitFlips = 3;
     std::bitset<WIDTH + 1> correctAnswer(calculateAnswer());
@@ -31,7 +31,7 @@ void Addition::generateOptions(){
     }
 }
 
-std::string Addition::getQuestion(){
+std::string BinAddition::getQuestion(){
     std::bitset<WIDTH> a;
     std::bitset<WIDTH> b;
     for (int i = 0; i < WIDTH; i++) {
