@@ -155,6 +155,9 @@ protected:
             case PLAINTEXT:
                 plainTextFormat(outstream);
                 break;
+            default:
+                std::cerr << "Unknown format!" << std::endl;
+                exit(1);
         }
         return outstream.str();
     }

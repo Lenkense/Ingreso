@@ -121,13 +121,33 @@ int main(int argc, char *argv[]){
         std::ostringstream answerStream;
         std::string line;
         std::string prefix = Bin2Dec::getInstance().getAnswerPrefix();
-        int num_of_answers = 0;
+        int num_of_answers = 1;
         while(std::getline(iterate, line)){
             if(line.rfind(prefix, 0) == 0){
+                std::string answerPrefix;
+                switch (format)
+                {
+                    case LATEX:
+                    case LATEXNOOPTIONS:
+                        answerPrefix = "\\item ";
+                        break;
+                    case NOOPTIONS:
+                    case PLAINTEXT:
+                        answerPrefix = std::to_string(num_of_answers) + ": ";
+                    break;
+                    case BLOOKET:
+                    default:
+                        std::cerr << "Unknown format!" << std::endl;
+                        exit(1);
+                }
+                answerStream << answerPrefix << line.substr(prefix.length()) << "\n";
                 num_of_answers++;
-                answerStream << num_of_answers << ": " << line.substr(prefix.length()) << "\n";
             } else {
-                questionStream << line << "\n";
+                std::string questionPrefix = "";
+                if(format == NOOPTIONS){
+                    questionPrefix = std::to_string(num_of_answers) + ": ";
+                }
+                questionStream << questionPrefix << line << "\n";
             }
         }
         std::string extension = formatExtension(format);

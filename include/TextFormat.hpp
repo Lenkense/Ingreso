@@ -18,8 +18,10 @@ inline std::string formatExtension(TextFormat textFormat){
             return ".csv";
         case NOOPTIONS:
         case PLAINTEXT:
-        default:
             return ".txt";
+        default:
+            std::cerr << "Unknown format!" << std::endl;
+            exit(1);
     }
 };
 
