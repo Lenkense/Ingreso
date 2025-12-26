@@ -120,7 +120,6 @@ protected:
         }
         std::string correctOption(1, 'a' + answer);
         stream << answerPrefix << correctOption << "\n";
-        stream << "\n";
     }
 
    // This is the API that your classes should implement
