@@ -3,20 +3,16 @@
 #include <regex>
 #include "PRNG.hpp"
 #include "Singleton.hpp"
+#include "QuestionBase.hpp"
+#include "TextFormat.hpp"
 
 #ifndef _QUESTION_HPP_
 #define _QUESTION_HPP_
 
-enum TextFormat: u_int8_t{
-    LATEX,
-    BLOOKET,
-    NOOPTIONS,
-    PLAINTEXT
-};
-
 template <typename Derived>
-class Question : public Singleton<Derived>{
+class Question : public Singleton<Derived>, public QuestionBase {
     friend class Singleton<Derived>;
+    friend class QuestionBase;
 protected:
     const static int NUM_OF_OPTIONS = 4;
     static PRNG& rng;
@@ -147,7 +143,7 @@ public:
         return outstream.str();
     }
 
-    std::vector<std::string> generateQuestions(int n, TextFormat format){
+    std::vector<std::string> generateQuestions(int n, TextFormat format) override {
         std::vector<std::string> result(n);
         for (int i = 0; i < n; i++) {
             result[i] = generateQuestion(format);

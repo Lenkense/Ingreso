@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "Question.hpp"
+#include "QuestionBase.hpp"
 #include "Bin2Dec.hpp"
 #include "Dec2Bin.hpp"
 #include "BinAddition.hpp"
@@ -63,66 +64,67 @@ int main(int argc, char *argv[]){
         exampleQuestions = std::stoi(argv[1]);
     }
     std::vector<std::string> questions;
+    QuestionBase *generator;
     if (binary) {
-        Question<Bin2Dec>& generator1 = Bin2Dec::getInstance();
-        questions = generator1.generateQuestions(exampleQuestions, format);
+        generator = &Bin2Dec::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
-        Question<Dec2Bin>& generator2 = Dec2Bin::getInstance();
-        questions = generator2.generateQuestions(exampleQuestions, format);
+        generator = &Dec2Bin::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
-        Question<BinAddition>& generator3 = BinAddition::getInstance();
-        questions = generator3.generateQuestions(exampleQuestions, format);
+        generator = &BinAddition::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
-        Question<BinSubstraction>& generator4 = BinSubstraction::getInstance();
-        questions = generator4.generateQuestions(exampleQuestions, format);
+        generator = &BinSubstraction::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
     }
     if (vector) {
-        Question<VectorPQ>& generator5 = VectorPQ::getInstance();
-        questions = generator5.generateQuestions(exampleQuestions, format);
+        generator = &VectorPQ::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
-        Question<VectorP2Q>& generator6 = VectorP2Q::getInstance();
-        questions = generator6.generateQuestions(exampleQuestions, format);
+        generator = &VectorP2Q::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
-        Question<VectorQ2P>& generator7 = VectorQ2P::getInstance();
-        questions = generator7.generateQuestions(exampleQuestions, format);
+        generator = &VectorQ2P::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
-        Question<VectorAddition>& generator8 = VectorAddition::getInstance();
-        questions = generator8.generateQuestions(exampleQuestions, format);
+        generator = &VectorAddition::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
-        Question<ScalarMultiplication>& generator9 = ScalarMultiplication::getInstance();
-        questions = generator9.generateQuestions(exampleQuestions, format);
+        generator = &ScalarMultiplication::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
-        Question<LinearCombination>& generator10 = LinearCombination::getInstance();
-        questions = generator10.generateQuestions(exampleQuestions, format);
+        generator = &LinearCombination::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
-        Question<VectorLength>& generator11 = VectorLength::getInstance();
-        questions = generator11.generateQuestions(exampleQuestions, format);
+        generator = &VectorLength::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
-        Question<UnitVector>& generator12 = UnitVector::getInstance();
-        questions = generator12.generateQuestions(exampleQuestions, format);
+        generator = &UnitVector::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;
         }
