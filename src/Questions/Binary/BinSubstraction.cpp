@@ -51,3 +51,10 @@ std::string BinSubstraction::getQuestion(){
     }
     return buffer;
 }
+
+void BinSubstraction::initData()
+{
+    Question::initData();
+    data[0] = 1; // Numbers greater than 128
+    data[WIDTH] = 1; // Numbers greater than 128
+}

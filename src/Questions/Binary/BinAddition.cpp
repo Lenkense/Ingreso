@@ -46,3 +46,10 @@ std::string BinAddition::getQuestion(){
             removeLeadingZeros(a.to_string()).c_str(), removeLeadingZeros(b.to_string()).c_str());
     return buffer;
 }
+
+void BinAddition::initData()
+{
+    Question::initData();
+    data[0] = 1; // Numbers greater than 128
+    data[WIDTH] = 1; // Numbers greater than 128
+}

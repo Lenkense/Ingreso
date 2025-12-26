@@ -27,8 +27,6 @@ std::string BinRemainder::calculateAnswerFromQuestion(std::smatch match)
 
 void BinRemainder::generateOptions()
 {
-    data[0] = 1; // Ensure dividend is greater than 1024
-    data[2 * WIDTH] = 1; // Ensure divisor is greater than 16
     int numberOfWrongOptions = NUM_OF_OPTIONS - 1;
     int maxNumOfBitFlips = 3;
     std::bitset<WIDTH> correctAnswer(calculateAnswer());
@@ -54,4 +52,11 @@ std::string BinRemainder::getQuestion()
     snprintf(buffer, sizeof(buffer), FORMAT,
             removeLeadingZeros(a.to_string()).c_str(), removeLeadingZeros(b.to_string()).c_str());
     return buffer;
+}
+
+void BinRemainder::initData()
+{
+    Question::initData();
+    data[0] = 1; // Ensure dividend is greater than 512
+    data[2 * WIDTH] = 1; // Ensure divisor is greater than 16
 }

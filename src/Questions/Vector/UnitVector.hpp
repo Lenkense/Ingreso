@@ -1,17 +1,16 @@
 #include "Question.hpp"
+#include "VectorQuestion.hpp"
 
 #ifndef _UNITVECTOR_HPP_
 #define _UNITVECTOR_HPP_
 
-class UnitVector : public Question<UnitVector>{
+class UnitVector : public VectorQuestion<UnitVector>{
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;
     void generateOptions() override;
     std::string getQuestion() override;
     std::string format() const override;
-    inline constexpr static size_t DIM = 4;
-    inline static size_t slice;
 public:
     inline constexpr static size_t DEFAULT_SIZE = DIM;
     inline const static char *FORMAT =

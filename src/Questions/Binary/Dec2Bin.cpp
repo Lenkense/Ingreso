@@ -49,3 +49,10 @@ std::string Dec2Bin::getQuestion(){
     snprintf(buffer, sizeof(buffer), FORMAT, std::to_string(result).c_str());
     return buffer;
 }
+
+void Dec2Bin::initData()
+{
+    Question::initData();
+    int i = rng.getInt(0, 4);
+    data[i] = 1; // Numbers greater than 256
+}

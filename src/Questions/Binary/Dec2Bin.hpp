@@ -14,6 +14,7 @@ protected:
     std::string calculateAnswerFromQuestion(std::smatch match) override;
     void generateOptions() override;
     std::string getQuestion() override;
+    void initData() override;
 };
 
 #endif

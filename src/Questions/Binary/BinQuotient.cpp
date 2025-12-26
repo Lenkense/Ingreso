@@ -27,8 +27,6 @@ std::string BinQuotient::calculateAnswerFromQuestion(std::smatch match)
 
 void BinQuotient::generateOptions()
 {
-    data[0] = 1; // Ensure dividend is greater than 1024
-    data[2 * WIDTH] = 1; // Ensure divisor is greater than 16
     int numberOfWrongOptions = NUM_OF_OPTIONS - 1;
     int maxNumOfBitFlips = 3;
     std::bitset<WIDTH + 1> correctAnswer(calculateAnswer());
@@ -54,4 +52,11 @@ std::string BinQuotient::getQuestion()
     snprintf(buffer, sizeof(buffer), FORMAT,
             removeLeadingZeros(a.to_string()).c_str(), removeLeadingZeros(b.to_string()).c_str());
     return buffer;
+}
+
+void BinQuotient::initData()
+{
+    Question::initData();
+    data[0] = 1; // Ensure dividend is greater than 512
+    data[2 * WIDTH] = 1; // Ensure divisor is greater than 16
 }

@@ -9,6 +9,7 @@ protected:
     std::string calculateAnswerFromQuestion(std::smatch match) override;
     void generateOptions() override;
     std::string getQuestion() override;
+    virtual void initData() override;
     inline constexpr static size_t WIDTH = 5;
 public:
     inline constexpr static size_t DEFAULT_SIZE = 2 * WIDTH;
