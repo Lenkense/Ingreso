@@ -1,5 +1,5 @@
 #include "LinearCombination.hpp"
-#include "StringUtils.hpp"
+#include "VectorUtils.hpp"
 
 std::string LinearCombination::calculateAnswer() {
     int k = data[0];

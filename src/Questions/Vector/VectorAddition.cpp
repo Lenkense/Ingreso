@@ -1,5 +1,5 @@
 #include "VectorAddition.hpp"
-#include "StringUtils.hpp"
+#include "VectorUtils.hpp"
 
 std::string VectorAddition::calculateAnswer() {
     std::vector<int> u(data.begin(), data.begin() + slice);

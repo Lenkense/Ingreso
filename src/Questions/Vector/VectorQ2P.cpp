@@ -1,5 +1,5 @@
 #include "VectorQ2P.hpp"
-#include "StringUtils.hpp"
+#include "VectorUtils.hpp"
 
 std::string VectorQ2P::calculateAnswer() {
     std::vector<int> q(data.begin(), data.begin() + slice);

@@ -1,5 +1,5 @@
 #include "ScalarMultiplication.hpp"
-#include "StringUtils.hpp"
+#include "VectorUtils.hpp"
 
 std::string ScalarMultiplication::calculateAnswer() {
     int k = data[0];

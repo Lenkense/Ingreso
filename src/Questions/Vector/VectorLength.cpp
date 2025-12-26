@@ -1,5 +1,5 @@
 #include "VectorLength.hpp"
-#include "StringUtils.hpp"
+#include "VectorUtils.hpp"
 
 std::string VectorLength::calculateAnswer(){
     int squared = 0;

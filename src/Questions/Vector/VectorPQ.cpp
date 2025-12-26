@@ -1,5 +1,5 @@
 #include "VectorPQ.hpp"
-#include "StringUtils.hpp"
+#include "VectorUtils.hpp"
 
 std::string VectorPQ::calculateAnswer() {
     std::vector<int> p(data.begin(), data.begin() + slice);

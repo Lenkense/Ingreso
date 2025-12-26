@@ -1,5 +1,5 @@
 #include "UnitVector.hpp"
-#include "StringUtils.hpp"
+#include "VectorUtils.hpp"
 
 std::string UnitVector::calculateAnswer(){
     int squared = 0;
