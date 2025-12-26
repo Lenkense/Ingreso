@@ -1,5 +1,6 @@
 #include <bitset>
 #include "BinAddition.hpp"
+#include "BinaryUtils.hpp"
 
 std::string BinAddition::calculateAnswer(){
     std::bitset<WIDTH> a;
@@ -9,14 +10,16 @@ std::string BinAddition::calculateAnswer(){
         b[WIDTH - 1 - i] = data[i + WIDTH];
     }
     std::bitset<WIDTH + 1> answer(a.to_ulong() + b.to_ulong());
-    return answer.to_string();
+    std::string answerStr = removeLeadingZeros(answer.to_string());
+    return answerStr;
 }
 
 std::string BinAddition::calculateAnswerFromQuestion(std::smatch match){
     std::bitset<WIDTH> a(match[1].str());
     std::bitset<WIDTH> b(match[2].str());
     std::bitset<WIDTH + 1> answer(a.to_ulong() + b.to_ulong());
-    return answer.to_string();
+    std::string answerStr = removeLeadingZeros(answer.to_string());
+    return answerStr;
 }
 
 void BinAddition::generateOptions(){
@@ -27,7 +30,7 @@ void BinAddition::generateOptions(){
     rng.bitsetOptions<WIDTH + 1>(numberOfWrongOptions,
             maxNumOfBitFlips, correctAnswer, output);
     for(int i = 0; i < numberOfWrongOptions; i++){
-        options[i] = output[i].to_string();
+        options[i] = removeLeadingZeros(output[i].to_string());
     }
 }
 
@@ -40,7 +43,7 @@ std::string BinAddition::getQuestion(){
     }
     char buffer[64] = "";
     snprintf(buffer, sizeof(buffer), FORMAT,
-            a.to_string().c_str(), b.to_string().c_str());
+            removeLeadingZeros(a.to_string()).c_str(), removeLeadingZeros(b.to_string()).c_str());
     return buffer;
 }
 

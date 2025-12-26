@@ -1,5 +1,6 @@
 #include <bitset>
 #include "BinSubstraction.hpp"
+#include "BinaryUtils.hpp"
 
 std::string BinSubstraction::calculateAnswer(){
     std::bitset<WIDTH> a;
@@ -11,14 +12,14 @@ std::string BinSubstraction::calculateAnswer(){
     int x = a.to_ulong();
     int y = b.to_ulong();
     std::bitset<WIDTH> answer(absDiff(a.to_ulong(),  b.to_ulong()));
-    return answer.to_string();
+    return removeLeadingZeros(answer.to_string());
 }
 
 std::string BinSubstraction::calculateAnswerFromQuestion(std::smatch match){
     std::bitset<WIDTH> a(match[1].str());
     std::bitset<WIDTH> b(match[2].str());
     std::bitset<WIDTH> answer(a.to_ulong() - b.to_ulong());
-    return answer.to_string();
+    return removeLeadingZeros(answer.to_string());
 }
 
 void BinSubstraction::generateOptions(){
@@ -29,7 +30,7 @@ void BinSubstraction::generateOptions(){
     rng.bitsetOptions<WIDTH>(numberOfWrongOptions,
             maxNumOfBitFlips, correctAnswer, output);
     for(int i = 0; i < numberOfWrongOptions; i++){
-        options[i] = output[i].to_string();
+        options[i] = removeLeadingZeros(output[i].to_string());
     }
 }
 
@@ -43,10 +44,10 @@ std::string BinSubstraction::getQuestion(){
     char buffer[64] = "";
     if(a.to_ulong() > b.to_ulong()){
         snprintf(buffer, sizeof(buffer), FORMAT,
-                a.to_string().c_str(), b.to_string().c_str());
+                removeLeadingZeros(a.to_string()).c_str(), removeLeadingZeros(b.to_string()).c_str());
     } else{
         snprintf(buffer, sizeof(buffer), FORMAT,
-                b.to_string().c_str(), a.to_string().c_str());
+                removeLeadingZeros(b.to_string()).c_str(), removeLeadingZeros(a.to_string()).c_str());
     }
     return buffer;
 }

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <numeric>
 #include "Bin2Dec.hpp"
+#include "BinaryUtils.hpp"
 
 std::string Bin2Dec::calculateAnswer(){
     return std::to_string(data[0]);
@@ -27,7 +28,8 @@ void Bin2Dec::generateOptions(){
 std::string Bin2Dec::getQuestion(){
     std::bitset<WIDTH> number(data[0]);
     char result[64] = "";
-    snprintf(result, sizeof(result), FORMAT, number.to_string().c_str());
+    std::string trimmedNumber = removeLeadingZeros(number.to_string());
+    snprintf(result, sizeof(result), FORMAT, trimmedNumber.c_str());
     return result;
 }
 

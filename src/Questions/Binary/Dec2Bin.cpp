@@ -1,17 +1,21 @@
+#include <bitset>
 #include "Dec2Bin.hpp"
+#include "BinaryUtils.hpp"
 
 std::string Dec2Bin::calculateAnswer(){
     std::bitset<DEFAULT_SIZE> answer;
     for (int i = 0; i < DEFAULT_SIZE; i++) {
         answer[DEFAULT_SIZE - 1 - i] = data[i];
     }
-    return answer.to_string();
+    std::string trimmedAnswer = removeLeadingZeros(answer.to_string());
+    return trimmedAnswer;
 }
 
 std::string Dec2Bin::calculateAnswerFromQuestion(std::smatch match){
     unsigned long number = std::atoi(match[1].str().c_str());
     std::bitset<DEFAULT_SIZE> answer(number);
-    return answer.to_string();
+    std::string trimmedAnswer = removeLeadingZeros(answer.to_string());
+    return trimmedAnswer;
 }
 
 void Dec2Bin::generateOptions(){
@@ -27,6 +31,11 @@ void Dec2Bin::generateOptions(){
     options[2] = correctAnswer.to_string();
     std::reverse(options[1].begin(), options[1].end());
     std::reverse(options[2].begin(), options[2].end());
+    for (int i = 0; i < 3; i++)
+    {
+        options[i] = removeLeadingZeros(options[i]);
+    }
+    
 }
 
 std::string Dec2Bin::getQuestion(){
