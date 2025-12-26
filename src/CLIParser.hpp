@@ -43,6 +43,8 @@ public:
             return NOOPTIONS;
         } else if (format == "PLAINTEXT") {
             return PLAINTEXT;
+        } else if (format == "LATEXNOOPTIONS") {
+            return LATEXNOOPTIONS;
         } else {
             std::cerr << "Unknown format: " << format << std::endl;
             showHelp();
@@ -61,18 +63,6 @@ public:
         }
     };
 
-    std::string formatExtension() const{
-        switch (textFormat){
-            case LATEX:
-                return ".tex";
-            case BLOOKET:
-                return ".csv";
-            case NOOPTIONS:
-            case PLAINTEXT:
-            default:
-                return ".txt";
-        }
-    };
     std::string getProgramName() const{ return programName; };
     int getNumberOfQuestions() const{ return numberOfQuestions; };
     TextFormat getTextFormat() const{ return textFormat; };
@@ -90,7 +80,7 @@ private:
     };
     std::vector<std::string> descriptions = {
         "Number of questions to generate (default: 5)",
-        "Output format: LATEX, BLOOKET, NOOPTIONS, PLAINTEXT (default: BLOOKET)",
+        "Output format: LATEX, LATEXNOOPTIONS, BLOOKET, NOOPTIONS, PLAINTEXT (default: BLOOKET)",
         "Disable binary question types",
         "Disable vector question types",
         "Output file prefix (default: standard output)"

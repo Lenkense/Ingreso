@@ -81,6 +81,17 @@ protected:
         stream << answer + 1 << std::endl;
     }
 
+    void latexNoOptionsFormat(std::ostream& stream){
+        std::string text;
+        text = "\\item " + getQuestion() + "\n";
+        std::string correctOption = options[answer];
+        text += answerPrefix + correctOption + "\n";
+        //TODO: Handle special LaTeX characters in question and options
+        std::regex re("√\\(([^)]*)\\)");
+        text = std::regex_replace(text, re, "$\\sqrt{$1}$");
+        stream << text;
+    }
+
     void latexFormat(std::ostream& stream){
         std::string text;
         text = "\\item " + getQuestion() + "\n";
@@ -107,7 +118,8 @@ protected:
         for(auto option: options){
             stream << option << "\n";
         }
-        stream << answerPrefix << (char) ('a' + (char) answer) << "\n";
+        std::string correctOption(1, 'a' + answer);
+        stream << answerPrefix << correctOption << "\n";
         stream << "\n";
     }
 
@@ -130,6 +142,9 @@ protected:
         switch(format){
             case LATEX:
                 latexFormat(outstream);
+                break;
+            case LATEXNOOPTIONS:
+                latexNoOptionsFormat(outstream);
                 break;
             case BLOOKET:
                 blooketFormat(outstream);

@@ -130,11 +130,12 @@ int main(int argc, char *argv[]){
                 questionStream << line << "\n";
             }
         }
-        std::ofstream outputQuestion(outputFile + parser.formatExtension());
+        std::string extension = formatExtension(format);
+        std::ofstream outputQuestion(outputFile + extension);
         outputQuestion << questionStream.str();
         outputQuestion.close();
         if(!answerStream.str().empty()){
-            std::ofstream outputAnswer(outputFile + "_answers" + parser.formatExtension());
+            std::ofstream outputAnswer(outputFile + "_answers" + extension);
             outputAnswer << answerStream.str();
             outputAnswer.close();
         }
