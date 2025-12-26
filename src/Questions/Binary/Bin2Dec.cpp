@@ -32,7 +32,3 @@ std::string Bin2Dec::getQuestion(){
     snprintf(result, sizeof(result), FORMAT, trimmedNumber.c_str());
     return result;
 }
-
-std::string Bin2Dec::format() const {
-    return FORMAT;
-}

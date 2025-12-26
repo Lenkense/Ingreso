@@ -55,8 +55,3 @@ std::string BinQuotient::getQuestion()
             removeLeadingZeros(a.to_string()).c_str(), removeLeadingZeros(b.to_string()).c_str());
     return buffer;
 }
-
-std::string BinQuotient::format() const
-{
-    return FORMAT;
-}

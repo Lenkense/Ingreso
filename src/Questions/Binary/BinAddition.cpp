@@ -46,7 +46,3 @@ std::string BinAddition::getQuestion(){
             removeLeadingZeros(a.to_string()).c_str(), removeLeadingZeros(b.to_string()).c_str());
     return buffer;
 }
-
-std::string BinAddition::format() const {
-    return FORMAT;
-}

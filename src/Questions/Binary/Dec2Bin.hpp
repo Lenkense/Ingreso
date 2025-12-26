@@ -9,7 +9,6 @@ public:
     inline constexpr static const char *FORMAT = "Convertir %s a binario";
     inline constexpr static int MIN_INT = 0;
     inline constexpr static int MAX_INT = 1;
-    std::string format() const override;
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;

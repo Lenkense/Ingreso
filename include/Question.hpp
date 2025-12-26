@@ -23,7 +23,7 @@ protected:
     Question() : data(Derived::DEFAULT_SIZE) {}
     virtual ~Question() {}
 
-    void initData() {
+    virtual void initData() {
         for (int i = 0; i < Derived::DEFAULT_SIZE; i++) {
             data[i] = rng.getInt(Derived::MIN_INT, Derived::MAX_INT);
         }
@@ -38,10 +38,8 @@ protected:
         options[answer] = calculateAnswer();
     }
 
-    std::string getFormat() const {
-        const Derived& self = static_cast<const Derived&>(*this);
-        std::string format = self.format();
-        return format;
+    virtual std::string format() const {
+        return Derived::FORMAT;
     }
 
     bool isNotValidQuestion(){
@@ -50,15 +48,15 @@ protected:
             return false;
         }
 
-        std::string format = getFormat();
+        std::string fmt = format();
         // Escape all regex special characters in format string
         std::regex special(R"([.^$|()\[\]{}*+?\\])");
-        format = std::regex_replace(format, special, "\\$&");
+        fmt = std::regex_replace(fmt, special, "\\$&");
         std::regex percentage(R"(%%)");
-        format = std::regex_replace(format, percentage, "%");
+        fmt = std::regex_replace(fmt, percentage, "%");
         std::regex target("%s");
-        format = std::regex_replace(format, target, "(.*)");
-        std::regex regex(format);
+        fmt = std::regex_replace(fmt, target, "(.*)");
+        std::regex regex(fmt);
         std::smatch match;
         std::string question = getQuestion();
         std::regex_match(question, match, regex);
@@ -152,8 +150,6 @@ public:
         }
         return result;
     }
-
-    virtual std::string format() const = 0;
 };
 
 template <typename Derived>

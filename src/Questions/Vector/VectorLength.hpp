@@ -9,10 +9,10 @@ protected:
     std::string calculateAnswerFromQuestion(std::smatch match) override;
     void generateOptions() override;
     std::string getQuestion() override;
+    std::string format() const override;
     inline constexpr static size_t DIM = 4;
     inline static size_t slice;
 public:
-    std::string format() const override;
     inline constexpr static size_t DEFAULT_SIZE = DIM;
     inline const static char *FORMAT =
         "Calcular el módulo del vector v donde: v = %s";

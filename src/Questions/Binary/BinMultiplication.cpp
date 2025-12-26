@@ -51,8 +51,3 @@ std::string BinMultiplication::getQuestion()
             removeLeadingZeros(a.to_string()).c_str(), removeLeadingZeros(b.to_string()).c_str());
     return buffer;
 }
-
-std::string BinMultiplication::format() const
-{
-    return FORMAT;
-}

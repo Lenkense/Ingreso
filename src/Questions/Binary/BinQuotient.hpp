@@ -11,7 +11,6 @@ protected:
     std::string getQuestion() override;
     inline constexpr static size_t WIDTH = 5;
 public:
-    std::string format() const override;
     inline constexpr static size_t DEFAULT_SIZE = 3 * WIDTH;
     inline constexpr static const char *FORMAT = "Encontrar el cociente de %s / %s";
     inline constexpr static int MIN_INT = 0;

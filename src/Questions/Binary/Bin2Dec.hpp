@@ -6,7 +6,6 @@
 
 class Bin2Dec : public Question<Bin2Dec>{
 public:
-    std::string format() const override;
     inline constexpr static size_t DEFAULT_SIZE = 1;
     inline constexpr static const char *FORMAT = "Convertir %s a decimal";
     inline constexpr static int MAX_INT = 3500;
