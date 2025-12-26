@@ -19,6 +19,7 @@ protected:
     std::vector<int> data;
     std::string options[NUM_OF_OPTIONS];
     int answer;
+    std::string answerPrefix = "%%%% Answer: ";
 
     Question() : data(Derived::DEFAULT_SIZE) {}
     virtual ~Question() {}
@@ -84,7 +85,7 @@ protected:
         std::string text;
         text = "\\item " + getQuestion() + "\n";
         std::string correctOption(1, 'a' + answer);
-        text += "%%%% Answer: " + correctOption + "\n";
+        text += answerPrefix + correctOption + "\n";
         text += "\\begin{enumerate}\n";
         for(auto option: options){
             text += "\\item " + option + "\n";
@@ -98,6 +99,7 @@ protected:
 
     void noOptionsFormat(std::ostream& stream){
         stream << getQuestion() << std::endl;
+        stream << answerPrefix << options[answer] << "\n";
     }
 
     void plainTextFormat(std::ostream& stream){
@@ -105,7 +107,7 @@ protected:
         for(auto option: options){
             stream << option << "\n";
         }
-        stream << "%%%% Answer: " << (char) ('a' + (char) answer) << "\n";
+        stream << answerPrefix << (char) ('a' + (char) answer) << "\n";
         stream << "\n";
     }
 
@@ -115,7 +117,6 @@ protected:
     virtual void generateOptions() = 0;
     virtual std::string getQuestion() = 0;
 
-public:
     std::string generateQuestion(TextFormat format){
         std::ostringstream outstream;
         bool validQuestion = false;
@@ -143,12 +144,17 @@ public:
         return outstream.str();
     }
 
+public:
     std::vector<std::string> generateQuestions(int n, TextFormat format) override {
         std::vector<std::string> result(n);
         for (int i = 0; i < n; i++) {
             result[i] = generateQuestion(format);
         }
         return result;
+    }
+
+    std::string getAnswerPrefix() const {
+        return answerPrefix;
     }
 };
 
