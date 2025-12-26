@@ -1,5 +1,5 @@
 #include "LinearCombination.hpp"
-#include "VectorPrint.hpp"
+#include "StringUtils.hpp"
 
 std::string LinearCombination::calculateAnswer() {
     int k = data[0];
@@ -26,7 +26,7 @@ std::string LinearCombination::calculateAnswerFromQuestion(std::smatch match) {
 }
 
 void LinearCombination::generateOptions() {
-    slice = PRNG::getInstance().getInt(2, DIM);
+    slice = rng.getInt(2, DIM);
     int k = data[0];
     int t = data[1];
     std::vector<int> u(data.begin() + 2, data.begin() + 2 + slice);

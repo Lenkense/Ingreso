@@ -1,8 +1,8 @@
 #include <string>
 #include <vector>
 
-#ifndef _VECTORPRINT_HPP_
-#define _VECTORPRINT_HPP_
+#ifndef _STRINGUTILS_HPP_
+#define _STRINGUTILS_HPP_
 
 inline const static std::string sqrtSymbol = "\u221A";
 
@@ -28,6 +28,11 @@ inline std::string vectorToString(const std::vector<int>& vec) {
 
 inline std::string sqrtToString(int value) {
     return sqrtSymbol + "(" + std::to_string(value) + ")";
+}
+
+std::string removeLeadingZeros(const std::string& s) {
+    size_t pos = s.find_first_not_of('0');
+    return (pos == std::string::npos) ? "0" : s.substr(pos);
 }
 
 #endif

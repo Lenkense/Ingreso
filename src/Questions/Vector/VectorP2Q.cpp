@@ -1,5 +1,5 @@
 #include "VectorP2Q.hpp"
-#include "VectorPrint.hpp"
+#include "StringUtils.hpp"
 
 std::string VectorP2Q::calculateAnswer() {
     std::vector<int> p(data.begin(), data.begin() + slice);
@@ -23,7 +23,7 @@ std::string VectorP2Q::calculateAnswerFromQuestion(std::smatch match) {
 }
 
 void VectorP2Q::generateOptions() {
-    slice = PRNG::getInstance().getInt(2, DIM);
+    slice = rng.getInt(2, DIM);
     std::vector<int> p(data.begin(), data.begin() + slice);
     std::vector<int> pq(data.begin() + slice, data.begin() + 2 * slice);
     std::vector<int> wrongAnswer(slice);

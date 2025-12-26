@@ -1,5 +1,5 @@
 #include "ScalarMultiplication.hpp"
-#include "VectorPrint.hpp"
+#include "StringUtils.hpp"
 
 std::string ScalarMultiplication::calculateAnswer() {
     int k = data[0];
@@ -22,7 +22,7 @@ std::string ScalarMultiplication::calculateAnswerFromQuestion(std::smatch match)
 }
 
 void ScalarMultiplication::generateOptions() {
-    slice = PRNG::getInstance().getInt(2, DIM);
+    slice = rng.getInt(2, DIM);
     int k = data[0];
     std::vector<int> v(data.begin() + 1, data.begin() + 1 + slice);
     std::vector<int> wrongVec(slice);

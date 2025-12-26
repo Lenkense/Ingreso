@@ -1,5 +1,5 @@
 #include "VectorLength.hpp"
-#include "VectorPrint.hpp"
+#include "StringUtils.hpp"
 
 std::string VectorLength::calculateAnswer(){
     int squared = 0;
@@ -20,7 +20,7 @@ std::string VectorLength::calculateAnswerFromQuestion(std::smatch match){
 }
 
 void VectorLength::generateOptions(){
-    slice = PRNG::getInstance().getInt(2, DIM);
+    slice = rng.getInt(2, DIM);
     int squared = 0;
     int linear = 0;
     int absolute = 0;

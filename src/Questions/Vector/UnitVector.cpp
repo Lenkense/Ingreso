@@ -1,5 +1,5 @@
 #include "UnitVector.hpp"
-#include "VectorPrint.hpp"
+#include "StringUtils.hpp"
 
 std::string UnitVector::calculateAnswer(){
     int squared = 0;
@@ -24,7 +24,7 @@ std::string UnitVector::calculateAnswerFromQuestion(std::smatch match){
 }
 
 void UnitVector::generateOptions(){
-    slice = PRNG::getInstance().getInt(2, DIM);
+    slice = rng.getInt(2, DIM);
     int squared = 0;
     int linear = 0;
     int absolute = 0;

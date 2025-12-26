@@ -1,5 +1,5 @@
 #include "VectorAddition.hpp"
-#include "VectorPrint.hpp"
+#include "StringUtils.hpp"
 
 std::string VectorAddition::calculateAnswer() {
     std::vector<int> u(data.begin(), data.begin() + slice);
@@ -22,7 +22,7 @@ std::string VectorAddition::calculateAnswerFromQuestion(std::smatch match) {
 }
 
 void VectorAddition::generateOptions() {
-    slice = PRNG::getInstance().getInt(2, DIM);
+    slice = rng.getInt(2, DIM);
     std::vector<int> u(data.begin(), data.begin() + slice);
     std::vector<int> v(data.begin() + slice, data.begin() + 2 * slice);
     std::vector<int> wrongAnswer(slice);
