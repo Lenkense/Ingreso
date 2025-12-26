@@ -1,9 +1,9 @@
 #include "Question.hpp"
 
-#ifndef _PQVECTOR_HPP_
-#define _PQVECTOR_HPP_
+#ifndef _VECTORPQ_HPP_
+#define _VECTORPQ_HPP_
 
-class PQvector : public Question<PQvector>{
+class VectorPQ : public Question<VectorPQ>{
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;

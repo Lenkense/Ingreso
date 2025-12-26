@@ -3,8 +3,8 @@
 
 std::string VectorLength::calculateAnswer(){
     int squared = 0;
-    std::vector<int> values(data.begin(), data.begin() + DIM);
-    for (size_t i = 0; i < DIM; i++){
+    std::vector<int> values(data.begin(), data.begin() + slice);
+    for (size_t i = 0; i < slice; i++){
         squared += values[i] * values[i];
     }
     return sqrtToString(squared);
@@ -12,7 +12,7 @@ std::string VectorLength::calculateAnswer(){
 
 std::string VectorLength::calculateAnswerFromQuestion(std::smatch match){
     int squared = 0;
-    for( size_t i = 0; i < DIM; i++){
+    for( size_t i = 0; i < slice; i++){
         int value = std::stoi(match[i + 1]);
         squared += value * value;
     }
@@ -20,11 +20,12 @@ std::string VectorLength::calculateAnswerFromQuestion(std::smatch match){
 }
 
 void VectorLength::generateOptions(){
+    slice = PRNG::getInstance().getInt(2, DIM);
     int squared = 0;
     int linear = 0;
     int absolute = 0;
-    std::vector<int> values(data.begin(), data.begin() + DIM);
-    for( size_t i = 0; i < DIM; i++){
+    std::vector<int> values(data.begin(), data.begin() + slice);
+    for( size_t i = 0; i < slice; i++){
         squared += values[i] * values[i];
         linear += values[i];
         absolute += values[i] > 0 ? values[i] : -values[i];
@@ -39,7 +40,7 @@ void VectorLength::generateOptions(){
 
 std::string VectorLength::getQuestion(){
     char buffer[128];
-    std::vector<int> values(data.begin(), data.begin() + DIM);
+    std::vector<int> values(data.begin(), data.begin() + slice);
     snprintf(buffer, sizeof(buffer), FORMAT,
             vectorToString(values).c_str());
     return std::string(buffer);
@@ -49,6 +50,6 @@ std::string VectorLength::format() const
 {
     char buffer[128];
     snprintf(buffer, sizeof(buffer), FORMAT,
-            emptyVector(DIM).c_str());
+            emptyVector(slice).c_str());
     return std::string(buffer);
 }
