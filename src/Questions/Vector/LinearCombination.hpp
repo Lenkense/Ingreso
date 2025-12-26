@@ -9,11 +9,13 @@ protected:
     std::string calculateAnswerFromQuestion(std::smatch match) override;
     void generateOptions() override;
     std::string getQuestion() override;
-    inline constexpr static size_t DIM = 2;
+    inline constexpr static size_t DIM = 4;
+    inline static size_t slice;
 public:
+    std::string format() const override;
     inline constexpr static size_t DEFAULT_SIZE = 2 + 2 * DIM;
     inline const static char *FORMAT =
-        "Calcular k.u + t.v a partir de k = %s, t = %s, u = (%s, %s) y v = (%s, %s)";
+        "Calcular k.u + t.v a partir de k = %s, t = %s, u = %s y v = %s";
     inline constexpr static int MIN_INT = -5;
     inline constexpr static int MAX_INT = 5;
 };

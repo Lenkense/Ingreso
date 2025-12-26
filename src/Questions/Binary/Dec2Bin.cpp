@@ -40,3 +40,7 @@ std::string Dec2Bin::getQuestion(){
     snprintf(buffer, sizeof(buffer), FORMAT, std::to_string(result).c_str());
     return buffer;
 }
+
+std::string Dec2Bin::format() const {
+    return FORMAT;
+}

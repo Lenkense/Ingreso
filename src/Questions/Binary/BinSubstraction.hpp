@@ -15,8 +15,9 @@ protected:
     std::string getQuestion() override;
     inline constexpr static size_t WIDTH = 8;
 public:
+    std::string format() const override;
     inline constexpr static size_t DEFAULT_SIZE = 2 * WIDTH;
-    inline const static char *FORMAT = "Restar: %s - %s";
+    inline constexpr static const char *FORMAT = "Restar: %s - %s";
     inline constexpr static int MIN_INT = 0;
     inline constexpr static int MAX_INT = 1;
 };

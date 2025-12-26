@@ -42,12 +42,19 @@ protected:
         options[answer] = calculateAnswer();
     }
 
+    std::string getFormat() const {
+        const Derived& self = static_cast<const Derived&>(*this);
+        std::string format = self.format();
+        return format;
+    }
+
     bool isNotValidQuestion(){
         std::set<std::string> diffOptions{std::begin(options), std::end(options)};
         if (diffOptions.size() != NUM_OF_OPTIONS){
             return false;
         }
-        std::string format(Derived::FORMAT);
+
+        std::string format = getFormat();
         // Escape all regex special characters in format string
         std::regex special(R"([.^$|()\[\]{}*+?\\])");
         format = std::regex_replace(format, special, "\\$&");
@@ -148,6 +155,7 @@ public:
         return result;
     }
 
+    virtual std::string format() const = 0;
 };
 
 template <typename Derived>

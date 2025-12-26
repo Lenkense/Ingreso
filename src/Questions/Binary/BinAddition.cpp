@@ -43,3 +43,7 @@ std::string BinAddition::getQuestion(){
             a.to_string().c_str(), b.to_string().c_str());
     return buffer;
 }
+
+std::string BinAddition::format() const {
+    return FORMAT;
+}

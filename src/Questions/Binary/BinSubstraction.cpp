@@ -50,3 +50,7 @@ std::string BinSubstraction::getQuestion(){
     }
     return buffer;
 }
+
+std::string BinSubstraction::format() const {
+    return FORMAT;
+}
