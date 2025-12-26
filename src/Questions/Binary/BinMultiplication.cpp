@@ -25,6 +25,8 @@ std::string BinMultiplication::calculateAnswerFromQuestion(std::smatch match)
 
 void BinMultiplication::generateOptions()
 {
+    data[0] = 1; // Ensure factors are greater than 16
+    data[WIDTH] = 1; // Ensure factors are greater than 16
     int numberOfWrongOptions = NUM_OF_OPTIONS - 1;
     int maxNumOfBitFlips = 3;
     std::bitset<2 * WIDTH> correctAnswer(calculateAnswer());
