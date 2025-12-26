@@ -31,7 +31,7 @@ void BinQuotient::generateOptions()
     int maxNumOfBitFlips = 3;
     std::bitset<WIDTH + 1> correctAnswer(calculateAnswer());
     std::vector<std::bitset<WIDTH + 1>> output;
-    rng.bitsetOptions<WIDTH + 1>(numberOfWrongOptions,
+    bitsetOptions<WIDTH + 1>(numberOfWrongOptions,
             maxNumOfBitFlips, correctAnswer, output);
     for(int i = 0; i < numberOfWrongOptions; i++){
         options[i] = removeLeadingZeros(output[i].to_string());

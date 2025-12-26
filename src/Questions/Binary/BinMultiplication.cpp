@@ -29,7 +29,7 @@ void BinMultiplication::generateOptions()
     int maxNumOfBitFlips = 3;
     std::bitset<2 * WIDTH> correctAnswer(calculateAnswer());
     std::vector<std::bitset<2 * WIDTH>> output;
-    rng.bitsetOptions<2 * WIDTH>(numberOfWrongOptions,
+    bitsetOptions<2 * WIDTH>(numberOfWrongOptions,
             maxNumOfBitFlips, correctAnswer, output);
     for(int i = 0; i < numberOfWrongOptions; i++){
         options[i] = removeLeadingZeros(output[i].to_string());

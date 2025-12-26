@@ -18,7 +18,7 @@ void Bin2Dec::generateOptions(){
     int maxNumOfBitFlips = 3;
     std::bitset<WIDTH> correctAnswer(data[0]);
     std::vector<std::bitset<WIDTH>> output;
-    rng.bitsetOptions<WIDTH>(numberOfWrongOptions,
+    bitsetOptions<WIDTH>(numberOfWrongOptions,
             maxNumOfBitFlips, correctAnswer, output);
     for(int i = 0; i < numberOfWrongOptions; i++){
         options[i] = std::to_string(output[i].to_ulong());

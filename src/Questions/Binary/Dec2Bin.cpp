@@ -23,7 +23,7 @@ void Dec2Bin::generateOptions(){
     int maxNumOfBitFlips = 3;
     std::bitset<DEFAULT_SIZE> correctAnswer(calculateAnswer());
     std::vector<std::bitset<DEFAULT_SIZE>> output;
-    rng.bitsetOptions<DEFAULT_SIZE>(numberOfWrongOptions,
+    bitsetOptions<DEFAULT_SIZE>(numberOfWrongOptions,
             maxNumOfBitFlips, correctAnswer, output);
     for(int i = 0; i < numberOfWrongOptions; i++){
         options[i] = output[i].to_string();

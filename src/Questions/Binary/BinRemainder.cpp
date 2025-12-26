@@ -31,7 +31,7 @@ void BinRemainder::generateOptions()
     int maxNumOfBitFlips = 3;
     std::bitset<WIDTH> correctAnswer(calculateAnswer());
     std::vector<std::bitset<WIDTH>> output;
-    rng.bitsetOptions<WIDTH>(numberOfWrongOptions,
+    bitsetOptions<WIDTH>(numberOfWrongOptions,
             maxNumOfBitFlips, correctAnswer, output);
     for(int i = 0; i < numberOfWrongOptions; i++){
         options[i] = removeLeadingZeros(output[i].to_string());
