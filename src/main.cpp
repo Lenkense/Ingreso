@@ -24,6 +24,8 @@ void showHelp(std::string programName){
 
 int main(int argc, char *argv[]){
     int exampleQuestions = 100;
+    bool binary = true;
+    bool vector = true;
     TextFormat format = BLOOKET;
     if(argc > 1){
         if(strncmp(argv[1], "--help", sizeof("--help")) == 0
@@ -60,65 +62,70 @@ int main(int argc, char *argv[]){
         }
         exampleQuestions = std::stoi(argv[1]);
     }
-    Question<Bin2Dec>& generator1 = Bin2Dec::getInstance();
-    auto questions = generator1.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
+    std::vector<std::string> questions;
+    if (binary) {
+        Question<Bin2Dec>& generator1 = Bin2Dec::getInstance();
+        questions = generator1.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        Question<Dec2Bin>& generator2 = Dec2Bin::getInstance();
+        questions = generator2.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        Question<BinAddition>& generator3 = BinAddition::getInstance();
+        questions = generator3.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        Question<BinSubstraction>& generator4 = BinSubstraction::getInstance();
+        questions = generator4.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
     }
-    Question<Dec2Bin>& generator2 = Dec2Bin::getInstance();
-    questions = generator2.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
-    }
-    Question<BinAddition>& generator3 = BinAddition::getInstance();
-    questions = generator3.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
-    }
-    Question<BinSubstraction>& generator4 = BinSubstraction::getInstance();
-    questions = generator4.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
-    }
-    Question<VectorPQ>& generator5 = VectorPQ::getInstance();
-    questions = generator5.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
-    }
-    Question<VectorP2Q>& generator6 = VectorP2Q::getInstance();
-    questions = generator6.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
-    }
-    Question<VectorQ2P>& generator7 = VectorQ2P::getInstance();
-    questions = generator7.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
-    }
-    Question<VectorAddition>& generator8 = VectorAddition::getInstance();
-    questions = generator8.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
-    }
-    Question<ScalarMultiplication>& generator9 = ScalarMultiplication::getInstance();
-    questions = generator9.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
-    }
-    Question<LinearCombination>& generator10 = LinearCombination::getInstance();
-    questions = generator10.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
-    }
-    Question<VectorLength>& generator11 = VectorLength::getInstance();
-    questions = generator11.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
-    }
-    Question<UnitVector>& generator12 = UnitVector::getInstance();
-    questions = generator12.generateQuestions(exampleQuestions, format);
-    for (auto &&question : questions) {
-        std::cout << question;
+    if (vector) {
+        Question<VectorPQ>& generator5 = VectorPQ::getInstance();
+        questions = generator5.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        Question<VectorP2Q>& generator6 = VectorP2Q::getInstance();
+        questions = generator6.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        Question<VectorQ2P>& generator7 = VectorQ2P::getInstance();
+        questions = generator7.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        Question<VectorAddition>& generator8 = VectorAddition::getInstance();
+        questions = generator8.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        Question<ScalarMultiplication>& generator9 = ScalarMultiplication::getInstance();
+        questions = generator9.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        Question<LinearCombination>& generator10 = LinearCombination::getInstance();
+        questions = generator10.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        Question<VectorLength>& generator11 = VectorLength::getInstance();
+        questions = generator11.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        Question<UnitVector>& generator12 = UnitVector::getInstance();
+        questions = generator12.generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
     }
     return 0;
 }
