@@ -1,7 +1,7 @@
 #include "Question.hpp"
 
-#ifndef _ADDITION_HPP_
-#define _ADDITION_HPP_
+#ifndef _BINADDITION_HPP_
+#define _BINADDITION_HPP_
 
 class BinAddition : public Question<BinAddition>{
 protected:

@@ -1,7 +1,7 @@
 #include "Question.hpp"
 
-#ifndef _SUBSTRACTION_HPP_
-#define _SUBSTRACTION_HPP_
+#ifndef _BINSUBSTRACTION_HPP_
+#define _BINSUBSTRACTION_HPP_
 
 constexpr int absDiff(int x, int y){
     return (x > y) ? x - y : y - x;
