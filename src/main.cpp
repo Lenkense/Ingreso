@@ -5,7 +5,7 @@
 #include "Dec2Bin.hpp"
 #include "BinAddition.hpp"
 #include "BinSubstraction.hpp"
-#include "PQvector.hpp"
+#include "VectorPQ.hpp"
 #include "VectorP2Q.hpp"
 #include "VectorQ2P.hpp"
 #include "VectorAddition.hpp"
@@ -80,7 +80,7 @@ int main(int argc, char *argv[]){
     for (auto &&question : questions) {
         std::cout << question;
     }
-    Question<PQvector>& generator5 = PQvector::getInstance();
+    Question<VectorPQ>& generator5 = VectorPQ::getInstance();
     questions = generator5.generateQuestions(exampleQuestions, format);
     for (auto &&question : questions) {
         std::cout << question;
