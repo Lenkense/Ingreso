@@ -131,10 +131,10 @@ int main(int argc, char *argv[]){
                     case LATEXNOOPTIONS:
                         answerPrefix = "\\item ";
                         break;
-                    case NOOPTIONS:
                     case PLAINTEXT:
+                    case NOOPTIONS:
                         answerPrefix = std::to_string(num_of_answers) + ": ";
-                    break;
+                        break;
                     case BLOOKET:
                     default:
                         std::cerr << "Unknown format!" << std::endl;
