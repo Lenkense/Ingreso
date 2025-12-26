@@ -1,0 +1,21 @@
+#include "Question.hpp"
+
+#ifndef _BINREMAINDER_HPP_
+#define _BINREMAINDER_HPP_
+
+class BinRemainder : public Question<BinRemainder>{
+protected:
+    std::string calculateAnswer() override;
+    std::string calculateAnswerFromQuestion(std::smatch match) override;
+    void generateOptions() override;
+    std::string getQuestion() override;
+    inline constexpr static size_t WIDTH = 5;
+public:
+    std::string format() const override;
+    inline constexpr static size_t DEFAULT_SIZE = 3 * WIDTH;
+    inline constexpr static const char *FORMAT = "Encontrar el resto de %s %% %s";
+    inline constexpr static int MIN_INT = 0;
+    inline constexpr static int MAX_INT = 1;
+};
+
+#endif

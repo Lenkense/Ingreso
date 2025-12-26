@@ -54,6 +54,8 @@ protected:
         // Escape all regex special characters in format string
         std::regex special(R"([.^$|()\[\]{}*+?\\])");
         format = std::regex_replace(format, special, "\\$&");
+        std::regex percentage(R"(%%)");
+        format = std::regex_replace(format, percentage, "%");
         std::regex target("%s");
         format = std::regex_replace(format, target, "(.*)");
         std::regex regex(format);

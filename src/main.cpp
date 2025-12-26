@@ -7,6 +7,8 @@
 #include "BinAddition.hpp"
 #include "BinSubstraction.hpp"
 #include "BinMultiplication.hpp"
+#include "BinQuotient.hpp"
+#include "BinRemainder.hpp"
 #include "VectorPQ.hpp"
 #include "VectorP2Q.hpp"
 #include "VectorQ2P.hpp"
@@ -88,6 +90,16 @@ int main(int argc, char *argv[]){
             std::cout << question;
         }
         generator = &BinMultiplication::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        generator = &BinQuotient::getInstance();
+        questions = generator->generateQuestions(exampleQuestions, format);
+        for (auto &&question : questions) {
+            std::cout << question;
+        }
+        generator = &BinRemainder::getInstance();
         questions = generator->generateQuestions(exampleQuestions, format);
         for (auto &&question : questions) {
             std::cout << question;

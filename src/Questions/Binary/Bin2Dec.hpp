@@ -1,11 +1,8 @@
 #include "Question.hpp"
+#include "BinaryUtils.hpp"
 
 #ifndef _BIN2DEC_HPP_
 #define _BIN2DEC_HPP_
-
-constexpr size_t const_log2(size_t n) {
-    return (n <= 1) ? 1 : 1 + const_log2(n/2);
-}
 
 class Bin2Dec : public Question<Bin2Dec>{
 public:
