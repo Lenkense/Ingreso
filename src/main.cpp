@@ -3,8 +3,8 @@
 #include "Question.hpp"
 #include "Bin2Dec.hpp"
 #include "Dec2Bin.hpp"
-#include "Addition.hpp"
-#include "Substraction.hpp"
+#include "BinAddition.hpp"
+#include "BinSubstraction.hpp"
 #include "PQvector.hpp"
 #include "VectorP2Q.hpp"
 #include "VectorQ2P.hpp"
@@ -70,12 +70,12 @@ int main(int argc, char *argv[]){
     for (auto &&question : questions) {
         std::cout << question;
     }
-    Question<Addition>& generator3 = Addition::getInstance();
+    Question<BinAddition>& generator3 = BinAddition::getInstance();
     questions = generator3.generateQuestions(exampleQuestions, format);
     for (auto &&question : questions) {
         std::cout << question;
     }
-    Question<Substraction>& generator4 = Substraction::getInstance();
+    Question<BinSubstraction>& generator4 = BinSubstraction::getInstance();
     questions = generator4.generateQuestions(exampleQuestions, format);
     for (auto &&question : questions) {
         std::cout << question;
