@@ -57,7 +57,7 @@ public:
         std::cout << "Generates a set of example questions for various question types." << std::endl;
         std::cout << "Usage: " << programName << " [options]" << std::endl;
         std::cout << "Options:" << std::endl;
-        std::cout << "  " << "-h | --help" << ": Show this help message" << std::endl;
+        std::cout << "  " << "-h, --help" << ": Show this help message" << std::endl;
         for (size_t i = 0; i < options.size(); i++) {
             std::cout << "  " << options[i] << ": " << descriptions[i] << std::endl;
         }
