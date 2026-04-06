@@ -1,3 +1,7 @@
+#include <cstdint>
+#include <string>
+#include <iostream>
+
 #ifndef _TEXTFORMAT_HPP_
 #define _TEXTFORMAT_HPP_
 
