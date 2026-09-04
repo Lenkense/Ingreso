@@ -6,8 +6,8 @@
 #include "QuestionGeneratorBase.hpp"
 #include "TextFormat.hpp"
 
-#ifndef _QUESTION_HPP_
-#define _QUESTION_HPP_
+#ifndef _QUESTIONGENERATOR_HPP_
+#define _QUESTIONGENERATOR_HPP_
 
 template <typename Derived>
 class QuestionGenerator : public Singleton<Derived>, public QuestionGeneratorBase {
