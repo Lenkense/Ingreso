@@ -1,3 +1,4 @@
+#include "Question.hpp"
 #include "VectorQuestion.hpp"
 
 #ifndef _VECTORP2Q_HPP_

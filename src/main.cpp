@@ -5,8 +5,8 @@
 #include <string>
 #include "CLIParser.hpp"
 #include "TextFormat.hpp"
-#include "QuestionGenerator.hpp"
-#include "QuestionGeneratorBase.hpp"
+#include "Question.hpp"
+#include "QuestionBase.hpp"
 #include "Bin2Dec.hpp"
 #include "Dec2Bin.hpp"
 #include "BinAddition.hpp"
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
     std::string outputFile = parser.getOutputFile();
     std::vector<std::string> questions;
     std::ostringstream stream;
-    QuestionGeneratorBase *generator;
+    QuestionBase *generator;
     if (binary) {
         generator = &Bin2Dec::getInstance();
         questions = generator->generateQuestions(exampleQuestions, format);

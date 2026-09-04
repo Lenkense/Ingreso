@@ -1,10 +1,10 @@
-#include "QuestionGenerator.hpp"
+#include "Question.hpp"
 #include "BinaryUtils.hpp"
 
 #ifndef _BIN2DEC_HPP_
 #define _BIN2DEC_HPP_
 
-class Bin2Dec : public QuestionGenerator<Bin2Dec>{
+class Bin2Dec : public Question<Bin2Dec>{
 public:
     inline constexpr static size_t DEFAULT_SIZE = 1;
     inline constexpr static const char *FORMAT = "Convertir %s a decimal";

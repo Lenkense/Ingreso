@@ -49,7 +49,7 @@ std::string BinAddition::getQuestion(){
 
 void BinAddition::initData()
 {
-    QuestionGenerator::initData();
+    Question::initData();
     data[0] = 1; // Numbers greater than 128
     data[WIDTH] = 1; // Numbers greater than 128
 }

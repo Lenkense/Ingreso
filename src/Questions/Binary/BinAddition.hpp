@@ -1,9 +1,9 @@
-#include "QuestionGenerator.hpp"
+#include "Question.hpp"
 
 #ifndef _BINADDITION_HPP_
 #define _BINADDITION_HPP_
 
-class BinAddition : public QuestionGenerator<BinAddition>{
+class BinAddition : public Question<BinAddition>{
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;

@@ -1,9 +1,9 @@
-#include "QuestionGenerator.hpp"
+#include "Question.hpp"
 
 #ifndef _EXAMPLEQUOTIENT_HPP_
 #define _EXAMPLEQUOTIENT_HPP_
 
-class ExampleQuotient : public QuestionGenerator<ExampleQuotient>{
+class ExampleQuotient : public Question<ExampleQuotient>{
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;

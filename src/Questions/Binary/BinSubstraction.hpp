@@ -1,4 +1,4 @@
-#include "QuestionGenerator.hpp"
+#include "Question.hpp"
 
 #ifndef _BINSUBSTRACTION_HPP_
 #define _BINSUBSTRACTION_HPP_
@@ -7,7 +7,7 @@ constexpr int absDiff(int x, int y){
     return (x > y) ? x - y : y - x;
 }
 
-class BinSubstraction : public QuestionGenerator<BinSubstraction>{
+class BinSubstraction : public Question<BinSubstraction>{
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;

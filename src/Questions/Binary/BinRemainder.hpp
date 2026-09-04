@@ -1,9 +1,9 @@
-#include "QuestionGenerator.hpp"
+#include "Question.hpp"
 
 #ifndef _BINREMAINDER_HPP_
 #define _BINREMAINDER_HPP_
 
-class BinRemainder : public QuestionGenerator<BinRemainder>{
+class BinRemainder : public Question<BinRemainder>{
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;
