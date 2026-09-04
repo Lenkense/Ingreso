@@ -52,7 +52,7 @@ std::string Dec2Bin::getQuestion(){
 
 void Dec2Bin::initData()
 {
-    Question::initData();
+    QuestionGenerator::initData();
     int i = rng.getInt(0, 4);
     data[i] = 1; // Numbers greater than 256
 }

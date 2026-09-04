@@ -1,9 +1,9 @@
-#include "Question.hpp"
+#include "QuestionGenerator.hpp"
 
 #ifndef _DEC2BIN_HPP_
 #define _DEC2BIN_HPP_
 
-class Dec2Bin : public Question<Dec2Bin>{
+class Dec2Bin : public QuestionGenerator<Dec2Bin>{
 public:
     inline constexpr static size_t DEFAULT_SIZE = 12;
     inline constexpr static const char *FORMAT = "Convertir %s a binario";

@@ -1,9 +1,9 @@
-#include "Question.hpp"
+#include "QuestionGenerator.hpp"
 
 #ifndef _BINQUOTIENT_HPP_
 #define _BINQUOTIENT_HPP_
 
-class BinQuotient : public Question<BinQuotient>{
+class BinQuotient : public QuestionGenerator<BinQuotient>{
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;

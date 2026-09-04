@@ -1,9 +1,9 @@
-#include "Question.hpp"
+#include "QuestionGenerator.hpp"
 
 #ifndef _BINMULTIPLICATION_HPP_
 #define _BINMULTIPLICATION_HPP_
 
-class BinMultiplication : public Question<BinMultiplication>{
+class BinMultiplication : public QuestionGenerator<BinMultiplication>{
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;

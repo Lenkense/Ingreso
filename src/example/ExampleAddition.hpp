@@ -1,9 +1,9 @@
-#include "Question.hpp"
+#include "QuestionGenerator.hpp"
 
 #ifndef _EXAMPLEADDITION_HPP_
 #define _EXAMPLEADDITION_HPP_
 
-class ExampleAddition : public Question<ExampleAddition>{
+class ExampleAddition : public QuestionGenerator<ExampleAddition>{
 protected:
     std::string calculateAnswer() override;
     std::string calculateAnswerFromQuestion(std::smatch match) override;

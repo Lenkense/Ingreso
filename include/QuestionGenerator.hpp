@@ -3,16 +3,16 @@
 #include <regex>
 #include "PRNG.hpp"
 #include "Singleton.hpp"
-#include "QuestionBase.hpp"
+#include "QuestionGeneratorBase.hpp"
 #include "TextFormat.hpp"
 
 #ifndef _QUESTION_HPP_
 #define _QUESTION_HPP_
 
 template <typename Derived>
-class Question : public Singleton<Derived>, public QuestionBase {
+class QuestionGenerator : public Singleton<Derived>, public QuestionGeneratorBase {
     friend class Singleton<Derived>;
-    friend class QuestionBase;
+    friend class QuestionGeneratorBase;
 protected:
     const static int NUM_OF_OPTIONS = 4;
     static PRNG& rng;
@@ -21,8 +21,8 @@ protected:
     int answer;
     std::string answerPrefix = "%%%% Answer: ";
 
-    Question() : data(Derived::DEFAULT_SIZE) {}
-    virtual ~Question() {}
+    QuestionGenerator() : data(Derived::DEFAULT_SIZE) {}
+    virtual ~QuestionGenerator() {}
 
     virtual void initData() {
         for (int i = 0; i < Derived::DEFAULT_SIZE; i++) {
@@ -176,6 +176,6 @@ public:
 };
 
 template <typename Derived>
-PRNG& Question<Derived>::rng = PRNG::getInstance();
+PRNG& QuestionGenerator<Derived>::rng = PRNG::getInstance();
 
 #endif

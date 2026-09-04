@@ -56,7 +56,7 @@ std::string BinQuotient::getQuestion()
 
 void BinQuotient::initData()
 {
-    Question::initData();
+    QuestionGenerator::initData();
     data[0] = 1; // Ensure dividend is greater than 512
     data[2 * WIDTH] = 1; // Ensure divisor is greater than 16
 }

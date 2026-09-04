@@ -52,7 +52,7 @@ std::string BinMultiplication::getQuestion()
 
 void BinMultiplication::initData()
 {
-    Question::initData();
+    QuestionGenerator::initData();
     data[0] = 1; // Ensure factors are greater than 16
     data[WIDTH] = 1; // Ensure factors are greater than 16
 }
